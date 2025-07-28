@@ -15,6 +15,7 @@ import { ProjectsWindow } from "./ProjectsWindow";
 import { AboutWindow } from "./AboutWindow";
 import { ProjectDetailWindow } from "./ProjectDetailWindow";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useSound } from "@/hooks/use-sound";
 
 // Custom Windows 95-style icon components
 const MyComputerIcon = ({ size = 32, className = "" }) => (
@@ -127,6 +128,7 @@ const ImageIcon = ({ src, size = 32, className = "" }) => (
 
 export const Desktop = () => {
   const isMobile = useIsMobile();
+  const { playClick, playDoubleClick, playWindowOpen } = useSound();
   const [windows, setWindows] = useState<
     Array<{
       id: string;
@@ -140,6 +142,7 @@ export const Desktop = () => {
   const [nextZIndex, setNextZIndex] = useState(1);
 
   const openWindow = (type: string, title: string, data?: any) => {
+    playWindowOpen();
     const id = `${type}-${Date.now()}`;
     const newWindow = {
       id,
@@ -152,6 +155,7 @@ export const Desktop = () => {
 
     setWindows((prev) => [...prev, newWindow]);
     setNextZIndex((prev) => prev + 1);
+    // Play window open sound
   };
 
   const closeWindow = (id: string) => {
@@ -188,12 +192,6 @@ export const Desktop = () => {
 
   const desktopIcons = [
     {
-      id: "my-computer",
-      icon: MyComputerIcon,
-      label: "My Computer",
-      action: () => {},
-    },
-    {
       id: "projects",
       icon: (props) => <ImageIcon src="/icons/folder.png" {...props} />,
       label: "Projects",
@@ -201,12 +199,17 @@ export const Desktop = () => {
     },
     {
       id: "about",
-      icon: AboutIcon,
+      icon: (props) => <ImageIcon src="/icons/aboutme.png" {...props} />,
       label: "About Me",
       action: () => openWindow("about", "About Me"),
     },
     { id: "readme", icon: ReadmeIcon, label: "README.txt", action: () => {} },
-    { id: "contact", icon: Mail, label: "Contact", action: () => {} },
+    {
+      id: "contact",
+      icon: (props) => <ImageIcon src="/icons/gmail.png" {...props} />,
+      label: "Contact",
+      action: () => {},
+    },
     { id: "settings", icon: Settings, label: "Settings", action: () => {} },
     { id: "help", icon: HelpCircle, label: "Help", action: () => {} },
   ];
@@ -214,6 +217,7 @@ export const Desktop = () => {
   const handleIconClick = (action: () => void) => {
     if (isMobile) {
       // On mobile, single tap opens
+      playClick(); // Play click sound immediately
       action();
     }
   };
@@ -221,7 +225,20 @@ export const Desktop = () => {
   const handleIconDoubleClick = (action: () => void) => {
     if (!isMobile) {
       // On desktop, double click opens
+      playDoubleClick(); // Play double click sound immediately
       action();
+    }
+  };
+
+  const handleIconPointerDown = (
+    action: () => void,
+    isDoubleClick: boolean = false
+  ) => {
+    // Play sound immediately on pointer down for faster response
+    if (isDoubleClick && !isMobile) {
+      playDoubleClick();
+    } else if (isMobile) {
+      playClick();
     }
   };
 
@@ -248,11 +265,12 @@ export const Desktop = () => {
                 ? "user"
                 : "default"
             }
+            onPointerDown={() => handleIconPointerDown(icon.action, !isMobile)}
             onClick={() => handleIconClick(icon.action)}
             onDoubleClick={() => handleIconDoubleClick(icon.action)}
             style={{ touchAction: "manipulation" }}
           >
-            <icon.icon size={isMobile ? 40 : 32} className="mb-1" />
+            <icon.icon size={isMobile ? 56 : 75} className="mb-1" />
             <span className="text-center leading-tight">{icon.label}</span>
           </div>
         ))}
