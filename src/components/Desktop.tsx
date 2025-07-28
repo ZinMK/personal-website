@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { HardDrive, Briefcase, Mail, Settings, HelpCircle } from "lucide-react";
+import {
+  HardDrive,
+  Briefcase,
+  Mail,
+  Settings,
+  HelpCircle,
+  MessageCircle,
+} from "lucide-react";
 import { Desktop as DesktopComponent } from "./Desktop";
 import { WindowManager } from "./WindowManager";
 import { ProjectsWindow } from "./ProjectsWindow";
 import { AboutWindow } from "./AboutWindow";
 import { ProjectDetailWindow } from "./ProjectDetailWindow";
 import { SettingsWindow } from "./SettingsWindow";
+import { VoiceAgent } from "./VoiceAgent";
 import { Taskbar } from "./Taskbar";
 import { useIsMobile } from "../hooks/use-mobile";
 import { useSound } from "../hooks/use-sound";
@@ -115,6 +123,7 @@ export const Desktop = () => {
     fontSize: "medium",
     backgroundColor: "default",
   });
+  const [isVoiceAgentOpen, setIsVoiceAgentOpen] = useState(false);
 
   // Load settings from localStorage on component mount
   useEffect(() => {
@@ -236,6 +245,12 @@ export const Desktop = () => {
       icon: (props) => <ImageIcon src="/icons/gear.png" {...props} />,
       label: "Site Settings",
       action: () => openWindow("settings", "Settings"),
+    },
+    {
+      id: "voice-agent",
+      icon: MessageCircle,
+      label: "Voice Assistant",
+      action: () => setIsVoiceAgentOpen(true),
     },
   ];
 
@@ -414,6 +429,12 @@ export const Desktop = () => {
       />
       {/* Taskbar */}
       <Taskbar windows={windows} onWindowClick={restoreWindow} />
+
+      {/* Voice Agent */}
+      <VoiceAgent
+        isOpen={isVoiceAgentOpen}
+        onClose={() => setIsVoiceAgentOpen(false)}
+      />
     </div>
   );
 };
