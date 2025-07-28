@@ -1,67 +1,77 @@
-import React from 'react';
-import { FileText, Folder, Image, Code, Globe, Database, LucideIcon } from 'lucide-react';
+import React from "react";
+import {
+  FileText,
+  Folder,
+  Image,
+  Code,
+  Globe,
+  Database,
+  AppWindow,
+  LucideIcon,
+} from "lucide-react";
 
 interface Project {
   id: string;
   name: string;
-  type: 'folder' | 'file';
+  type: "folder" | "file";
   icon: LucideIcon;
   description: string;
   technologies?: string[];
-  status: 'completed' | 'in-progress' | 'planned';
+  status: "completed" | "in-progress" | "planned";
 }
 
 interface ProjectsWindowProps {
   onOpenProject: (project: Project) => void;
 }
 
-export const ProjectsWindow: React.FC<ProjectsWindowProps> = ({ onOpenProject }) => {
+export const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
+  onOpenProject,
+}) => {
   const projects: Project[] = [
     {
-      id: 'portfolio-website',
-      name: 'Portfolio Website',
-      type: 'folder',
+      id: "classfinder-ai",
+      name: "ClassFinder.ai",
+      type: "folder",
       icon: Globe,
-      description: 'Modern portfolio website built with React and TypeScript',
-      technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-      status: 'completed'
+      description: "AI-powered online class finding agent",
+      technologies: ["React", "Vite", "Tailwind CSS", "AI/ML"],
+      status: "completed",
     },
     {
-      id: 'task-manager',
-      name: 'Task Manager App',
-      type: 'folder',
+      id: "eureka",
+      name: "Eureka - Campus Buddy (IOS)",
+      type: "folder",
+      icon: AppWindow,
+      description: "iOS app for campus social networking",
+      technologies: ["Swift", "SwiftUI", "Firebase", "iOS"],
+      status: "completed",
+    },
+    {
+      id: "portfolio-website",
+      name: "Portfolio Website",
+      type: "folder",
       icon: FileText,
-      description: 'Full-stack task management application',
-      technologies: ['React', 'Node.js', 'MongoDB'],
-      status: 'completed'
+      description: "Windows 95 style portfolio website",
+      technologies: ["React", "TypeScript", "Tailwind CSS"],
+      status: "completed",
     },
+
     {
-      id: 'weather-app',
-      name: 'Weather Dashboard',
-      type: 'folder',
-      icon: Image,
-      description: 'Weather dashboard with interactive maps',
-      technologies: ['Vue.js', 'OpenWeather API'],
-      status: 'completed'
-    },
-    {
-      id: 'ecommerce-platform',
-      name: 'E-commerce Platform',
-      type: 'folder',
-      icon: Database,
-      description: 'Scalable e-commerce solution',
-      technologies: ['Next.js', 'Stripe', 'PostgreSQL'],
-      status: 'in-progress'
-    },
-    {
-      id: 'mobile-app',
-      name: 'Mobile Fitness App',
-      type: 'folder',
+      id: "Diamond Price Predictor (ML)",
+      name: "Diamond Price Predictor Model",
+      type: "folder",
       icon: Code,
-      description: 'Cross-platform fitness tracking app',
-      technologies: ['React Native', 'Firebase'],
-      status: 'planned'
-    }
+      description: "ML Model to predict diamond prices",
+      technologies: [
+        "Python",
+        "Scikit-Learn",
+        "Pandas",
+        "Numpy",
+        "Matplotlib",
+        "Seaborn",
+      ],
+      status: "completed",
+    },
   ];
 
   return (
@@ -93,11 +103,13 @@ export const ProjectsWindow: React.FC<ProjectsWindowProps> = ({ onOpenProject })
               onDoubleClick={() => onOpenProject(project)}
             >
               <project.icon size={32} className="text-blue-600 mb-1" />
-              <span className="text-xs text-center leading-tight">{project.name}</span>
+              <span className="text-xs text-center leading-tight">
+                {project.name}
+              </span>
               <div className="text-xs text-gray-500 mt-1">
-                {project.status === 'completed' && '✅'}
-                {project.status === 'in-progress' && '🔄'}
-                {project.status === 'planned' && '📅'}
+                {project.status === "completed" && "✅"}
+                {project.status === "in-progress" && "🔄"}
+                {project.status === "planned" && "📅"}
               </div>
             </div>
           ))}
@@ -106,7 +118,9 @@ export const ProjectsWindow: React.FC<ProjectsWindowProps> = ({ onOpenProject })
 
       {/* Status Bar */}
       <div className="win95-inset p-1 text-xs bg-card border-t">
-        {projects.length} object(s) | {projects.filter(p => p.status === 'completed').length} completed projects
+        {projects.length} object(s) |{" "}
+        {projects.filter((p) => p.status === "completed").length} completed
+        projects
       </div>
     </div>
   );

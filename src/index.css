@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Windows 95 Retro Design System */
-@import url("https://fonts.googleapis.com/css2?family=MS+Sans+Serif:wght@400;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=MS+Sans+Serif:wght@400;700&display=swap"); */
 
 @layer base {
   :root {
@@ -290,5 +290,120 @@
 
   .mobile-drag-handle {
     touch-action: none;
+  }
+
+  /* Windows 95 Loading Screen Animations */
+  @keyframes win95-boot-fade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes win95-boot-slide {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .win95-boot-screen {
+    animation: win95-boot-fade 1s ease-in-out;
+  }
+
+  .win95-boot-text {
+    animation: win95-boot-slide 0.8s ease-out 0.2s both;
+  }
+
+  .win95-boot-dots {
+    animation: win95-boot-slide 0.8s ease-out 0.4s both;
+  }
+
+  /* Maximum Quality Image Rendering */
+  .high-quality-bg {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* High DPI Display Support */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .high-quality-bg {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+
+  /* Retina Display Optimization */
+  @media (-webkit-min-device-pixel-ratio: 2) and (-webkit-min-device-pixel-ratio: 3) {
+    .high-quality-bg {
+      image-rendering: auto;
+    }
+  }
+
+  /* Windows 95 Style Radio Buttons and Checkboxes */
+  .win95-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px outset #c0c0c0;
+    background: #c0c0c0;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .win95-checkbox:checked {
+    background: #c0c0c0;
+    border: 2px inset #c0c0c0;
+  }
+
+  .win95-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border-radius: 50%;
+  }
+
+  .win95-checkbox:focus {
+    outline: 1px dotted #000;
+  }
+
+  /* Radio button specific styles */
+  input[type="radio"].win95-checkbox:checked::after {
+    border-radius: 50%;
+  }
+
+  /* Checkbox specific styles */
+  input[type="checkbox"].win95-checkbox:checked::after {
+    content: "✓";
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
   }
 }

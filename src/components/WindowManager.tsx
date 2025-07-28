@@ -67,9 +67,16 @@ const Window: React.FC<WindowComponentProps> = ({
     x: isMobile ? 10 : 100,
     y: isMobile ? 20 : 100,
   });
-  const [size, setSize] = React.useState({
-    width: isMobile ? globalThis.innerWidth - 20 : 600,
-    height: isMobile ? globalThis.innerHeight - 120 : 400,
+  const [size, setSize] = React.useState(() => {
+    // Use custom size if provided, otherwise use default
+    const customSize = window.data?.customSize;
+    if (customSize) {
+      return customSize;
+    }
+    return {
+      width: isMobile ? globalThis.innerWidth - 20 : 600,
+      height: isMobile ? globalThis.innerHeight - 120 : 400,
+    };
   });
   const [isDragging, setIsDragging] = React.useState(false);
   const [isResizing, setIsResizing] = React.useState(false);
