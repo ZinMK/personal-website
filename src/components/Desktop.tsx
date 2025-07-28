@@ -248,8 +248,8 @@ export const Desktop = () => {
     },
     {
       id: "voice-agent",
-      icon: MessageCircle,
-      label: "Voice Assistant",
+      icon: (props) => <ImageIcon src="/icons/greg.png" {...props} />,
+      label: "Greg AI Voice Assistant",
       action: () => setIsVoiceAgentOpen(true),
     },
   ];
