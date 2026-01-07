@@ -6,7 +6,6 @@ import {
   Calendar,
   CheckCircle,
 } from "lucide-react";
-import { channel } from "diagnostics_channel";
 
 interface ProjectDetailProps {
   projectId: string;
@@ -20,115 +19,64 @@ export const ProjectDetailWindow: React.FC<ProjectDetailProps> = ({
     "classfinder-ai": {
       name: "ClassFinder.ai",
       description:
-        "An intelligent online class finding agent that helps users discover and enroll in courses. Built with modern web technologies and AI-powered search capabilities.",
+        "Developed an NLP search tool parsing conversational queries for class schedules, outperforming keyword search efficiency. The application uses natural language processing to understand user intent and provide relevant course recommendations. Containerized the full-stack application using Docker, ensuring consistent runtime environments across servers.",
       technologies: [
         "React",
-        "Vite",
-        "Tailwind CSS",
         "TypeScript",
-        "API",
-        "Tool Calling",
-        "Google Agent Development Kit",
+        "Google ADK",
+        "Docker",
+        "NLP",
         "Google Cloud Platform",
-        "Vertex AI",
-        "Python",
-        "Docker/Kubernetes",
-        "N8N",
         "Node.js",
-        "Express",
       ],
       status: "completed",
       completedDate: "2024-01-15",
       liveUrl: "https://classfinder.ai",
-      githubUrl: "https://github.com/johndeveloper/classfinder-ai",
+      githubUrl: "https://github.com/ZinMK/classfinder-ai",
       features: [
-        "AI-powered course search and recommendations",
-        "Intelligent class matching algorithm",
-        "Real-time course availability checking",
-        "User-friendly interface with modern design",
-        "Responsive design for all devices",
-        "Advanced filtering and sorting options",
-        "Course enrollment integration",
+        "Natural language processing for conversational queries",
+        "Intelligent class schedule parsing",
+        "Superior search efficiency compared to keyword search",
+        "Docker containerization for consistent deployment",
+        "Full-stack application architecture",
+        "Responsive web interface",
       ],
       challenges:
-        "The main challenge was prompting the RAG agent to work as intended and understand the core request of the user. However, after adding more agents for context filtering, the agent was able to understand the user's request and provide the correct courses.",
+        "The main challenge was developing an NLP system that could accurately parse conversational queries and understand user intent for class schedules. Implementing efficient search algorithms that outperformed traditional keyword-based approaches required careful design and optimization.",
       learnings:
-        "Learned advanced AI/ML integration techniques such as RAG and Embeddings, improved my skills in building scalable search systems, and gained experience with modern frontend tooling like Vite.",
+        "Gained expertise in NLP implementation, Docker containerization, and building scalable search systems. Learned how to leverage Google ADK for intelligent agent development and improved skills in full-stack application architecture.",
     },
 
     eureka: {
-      name: "Eureka - Campus Buddy!",
+      name: "Eureka - Campus Social App",
       description:
-        "An iOS social networking app designed to help college students find people with similar interests and organize hangouts on campus. Features location-based matching and real-time messaging.",
+        "Launched a mobile app for student hangouts, acquiring 64 active users and facilitating 200+ student events. Implemented real-time geolocation sharing using Firebase Realtime Database to handle concurrent location updates. Engineered a push notification system that drove a 40% increase in daily active user engagement.",
       technologies: [
-        "Swift",
-        "SwiftUI",
+        "Flutter",
         "Firebase",
-        "Core Location",
+        "Maps API",
+        "Google Cloud Platform",
         "Push Notifications",
-        "MapKit",
-        "CloudKit",
+        "Real-time Database",
+        "Geolocation Services",
       ],
       status: "completed",
       completedDate: "2023-11-20",
       liveUrl: "https://apps.apple.com/us/app/eureka-campus-buddy/id6470950630",
       githubUrl: "-",
       features: [
-        "Location-based user discovery",
-        "Interest-based matching algorithm",
-        "Real-time messaging and chat",
-        "Event creation and management",
-        "Campus-specific filtering",
-        "Push notifications for matches",
-        "Profile customization with interests",
-        "Safety features and user verification",
-        "Integration with university databases",
-        "Analytics dashboard for user engagement",
+        "Real-time geolocation sharing with Firebase Realtime Database",
+        "Student event creation and management",
+        "Push notification system for user engagement",
+        "Concurrent location update handling",
+        "Campus-specific social networking",
+        "User profile and matching system",
+        "Event discovery and RSVP functionality",
       ],
       challenges:
-        "The biggest challenge was implementing a robust location-based matching system while ensuring user privacy and safety. Balancing real-time features with battery optimization was also crucial for mobile performance.",
+        "The biggest challenge was implementing a robust real-time geolocation system that could handle concurrent location updates efficiently while maintaining good performance. Building a push notification system that effectively increased user engagement required careful design and testing.",
       learnings:
-        "Gained deep expertise in iOS development with Swift and SwiftUI, learned advanced Firebase integration techniques, and developed skills in location-based services and real-time communication systems.",
-    },
-    "portfolio-website": {
-      name: "Portfolio Website",
-      githubUrl: "https://github.com/macrohard/portfolio-website",
-      liveUrl: "https://macrohard.com",
-      description: "A portfolio website built with React and Tailwind CSS.",
-      technologies: ["React", "Tailwind CSS"],
-      status: "completed",
-      completedDate: "2023-12-10",
-      challenges:
-        "The main challenge was to make the website look like Windows 95.",
-      learnings: "Audio and Video integration in the website.",
-      features: [
-        "Windows 95 look and feel",
-        "Audio and Video integration",
-        "Responsive design",
-        "Modern design",
-        "User-friendly interface",
-      ],
-    },
-    "Diamond Price Predictor (ML)": {
-      name: "Diamond Price Predictor Model",
-      liveUrl: "https://macrohard.com",
-      githubUrl: "https://github.com/macrohard/diamond-price-predictor",
-      description:
-        "An end to end ML project where I trained a ML model to predict diamond prices with 97% accuracy using Grid-Search, Gradient Descent, ",
-      technologies: [""],
-      status: "completed",
-      completedDate: "2023-12-10",
-      features: [
-        "Grid-Search",
-        "Gradient Descent",
-        "Linear Regression",
-        "Polynomial Regression",
-        "Ridge Regression",
-      ],
-      challenges:
-        "The main Challenge was to understand the data and the features that were given to me and then train the model to predict the price of the diamond.",
-      learnings:
-        "Learned about the different types of Regression Models and how to use them to predict the price of the diamond.",
+        "Gained deep expertise in Flutter mobile development, Firebase Realtime Database integration, and push notification systems. Learned how to optimize for concurrent data updates and developed skills in user engagement optimization. Achieved significant results with 64 active users and 200+ events facilitated.",
     },
   };
 

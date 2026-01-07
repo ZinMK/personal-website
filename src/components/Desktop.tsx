@@ -314,8 +314,11 @@ export const Desktop = () => {
   };
 
   const handleIconClick = (action: () => void) => {
-    // Single click does nothing - only for visual feedback
-    // Icons only open on double-click
+    // On mobile, single click opens the icon
+    // On desktop, single click does nothing (only double-click opens)
+    if (isMobile) {
+      action();
+    }
   };
 
   const handleIconDoubleClick = (action: () => void) => {

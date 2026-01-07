@@ -23,22 +23,14 @@ export const VoiceAgent: React.FC<VoiceAgentProps> = ({ isOpen, onClose }) => {
     import.meta.env.VITE_VAPI_ASSISTANT_ID || "your-vapi-assistant-id-here";
 
   useEffect(() => {
-    console.log("VoiceAgent useEffect running");
-    console.log("VAPI_PUBLIC_KEY:", VAPI_PUBLIC_KEY);
-    console.log("VAPI_ASSISTANT_ID:", VAPI_ASSISTANT_ID);
-
     if (!VAPI_PUBLIC_KEY || VAPI_PUBLIC_KEY === "your-vapi-public-key-here") {
-      console.log("VAPI_PUBLIC_KEY not configured");
       return;
     }
 
-    console.log("Creating VAPI instance...");
     const vapiInstance = new Vapi(VAPI_PUBLIC_KEY);
     vapiRef.current = vapiInstance;
-    console.log("VAPI instance created:", vapiInstance);
 
     vapiInstance.on("call-start", () => {
-      console.log("VAPI call-start event");
       setIsCallActive(true);
       setAgentStatus("connected");
       setStatusMessage("Connected");
@@ -46,26 +38,22 @@ export const VoiceAgent: React.FC<VoiceAgentProps> = ({ isOpen, onClose }) => {
     });
 
     vapiInstance.on("call-end", () => {
-      console.log("VAPI call-end event");
       setIsCallActive(false);
       setAgentStatus("idle");
       setStatusMessage("Ready to connect");
     });
 
     vapiInstance.on("speech-start", () => {
-      console.log("VAPI speech-start event");
       setAgentStatus("speaking");
       setStatusMessage("Speaking");
     });
 
     vapiInstance.on("speech-end", () => {
-      console.log("VAPI speech-end event");
       setAgentStatus("listening");
       setStatusMessage("Listening");
     });
 
     vapiInstance.on("message", (message) => {
-      console.log("VAPI message event:", message);
       if (
         message.type === "transcript" &&
         message.transcriptType === "final" &&
@@ -83,38 +71,28 @@ export const VoiceAgent: React.FC<VoiceAgentProps> = ({ isOpen, onClose }) => {
     });
 
     return () => {
-      console.log("Cleaning up VAPI instance");
       vapiInstance.stop();
     };
   }, [VAPI_PUBLIC_KEY]);
 
   const handleCallToggle = () => {
-    console.log("handleCallToggle called");
-    console.log("isCallActive:", isCallActive);
-    console.log("vapiRef.current:", vapiRef.current);
-    console.log("VAPI_PUBLIC_KEY:", VAPI_PUBLIC_KEY);
-    console.log("VAPI_ASSISTANT_ID:", VAPI_ASSISTANT_ID);
-
     if (vapiRef.current) {
       if (isCallActive) {
-        console.log("Stopping call...");
         vapiRef.current.stop();
       } else {
         if (
           !VAPI_ASSISTANT_ID ||
           VAPI_ASSISTANT_ID === "your-vapi-assistant-id-here"
         ) {
-          console.log("VAPI_ASSISTANT_ID not configured");
           setStatusMessage("Not configured");
           return;
         }
-        console.log("Starting call...");
+
         setAgentStatus("connecting");
         setStatusMessage("Connecting");
         vapiRef.current.start(VAPI_ASSISTANT_ID);
       }
     } else {
-      console.log("vapiRef.current is null");
       setStatusMessage("Not initialized");
     }
   };
@@ -153,7 +131,7 @@ export const VoiceAgent: React.FC<VoiceAgentProps> = ({ isOpen, onClose }) => {
           <div className="mb-4 win95-inset p-2 flex items-center space-x-2">
             <div
               className={`w-4 h-4 rounded-full ${
-                agentStatus === "listening" && isCallActive
+                agentStatus === "listening"
                   ? "bg-green-500 animate-pulse"
                   : agentStatus === "connected"
                   ? "bg-green-500"

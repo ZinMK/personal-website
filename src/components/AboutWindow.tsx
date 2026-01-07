@@ -52,16 +52,16 @@ export const AboutWindow: React.FC = () => {
           {/* Personal Info */}
           <div className="flex-1 space-y-4">
             <div>
-              <h1 className="text-2xl font-bold mb-2">Zin Min Khant</h1>
+              <h1 className="text-2xl font-bold mb-2">Zin Khant</h1>
               <p className="text-lg text-gray-600 mb-4">
-                Full-Stack AI/ML Dev{" "}
+                Software Engineering Intern | Computer Science Student
               </p>
             </div>
 
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-blue-600" />
-                <span>shanunapal@email.com</span>
+                <span>shanunapal@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-green-600" />
@@ -69,7 +69,7 @@ export const AboutWindow: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Calendar size={16} className="text-purple-600" />
-                <span>Available for new opportunities</span>
+                <span>University of St. Thomas • Expected June 2027</span>
               </div>
             </div>
 
@@ -99,7 +99,7 @@ export const AboutWindow: React.FC = () => {
               <button
                 className="win95-button text-xs flex items-center space-x-1"
                 onClick={() =>
-                  window.open("https://johndeveloper.dev", "_blank")
+                  window.open("https://zinmk.com", "_blank")
                 }
               >
                 <Globe size={12} />
@@ -115,24 +115,13 @@ export const AboutWindow: React.FC = () => {
           </h3>
           <div className="win95-inset p-4 bg-gray-50">
             <p className="text-sm text-gray-700 leading-relaxed mb-3">
-              I'm a passionate full-stack developer with expertise in modern web
-              technologies and mobile app development. I specialize in creating
-              intelligent applications that solve real-world problems, from
-              AI-powered course finding systems to social networking apps for
-              college campuses.
+              I'm a Computer Science student at the University of St. Thomas with a passion for building impactful software solutions. Currently working as a Software Engineering Intern, I specialize in full-stack development, AI/ML integration, and creating scalable applications that solve real-world problems.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed mb-3">
-              My journey in tech started with web development and has evolved to
-              include iOS development, AI/ML integration, and building scalable
-              systems. I love working with cutting-edge technologies and
-              creating user experiences that make a difference in people's
-              lives.
+              My experience spans web development, mobile app creation, and AI-powered systems. I've architected reusable React components, engineered CI/CD pipelines, and developed automated testing suites that significantly improve development efficiency. I'm particularly interested in leveraging AI/ML technologies to create intelligent applications.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies,
-              contributing to open source projects, or sharing knowledge with
-              the developer community. I'm always excited to take on new
-              challenges and learn something new.
+              Beyond coding, I founded the Nexus AI Club at my university to help students learn about Large Language Models and host hackathons. I'm always excited to take on new challenges, learn cutting-edge technologies, and contribute to projects that make a meaningful impact.
             </p>
           </div>
         </div>
@@ -144,27 +133,24 @@ export const AboutWindow: React.FC = () => {
           </h3>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="win95-inset p-3 bg-gray-50">
-              <strong className="text-blue-600">Frontend Development:</strong>
+              <strong className="text-blue-600">Languages:</strong>
               <br />
-              React, TypeScript, Vue.js, Swift/SwiftUI, HTML/CSS, Tailwind CSS,
-              Vite
+              Python, Java, C, JavaScript, TypeScript, Go, HTML, CSS
             </div>
             <div className="win95-inset p-3 bg-gray-50">
-              <strong className="text-green-600">Backend Development:</strong>
+              <strong className="text-green-600">Frameworks & Libraries:</strong>
               <br />
-              Node.js, Python, Express, Firebase, PostgreSQL, MongoDB, REST APIs
+              React, Node.js, PyTorch, NumPy, Scikit-Learn, Pandas, Google ADK
             </div>
             <div className="win95-inset p-3 bg-gray-50">
-              <strong className="text-purple-600">AI/ML & Cloud:</strong>
+              <strong className="text-purple-600">Tools & Platforms:</strong>
               <br />
-              AI/ML Integration, Google Cloud Platform, Vertex AI, RAG Systems,
-              Embeddings
+              Docker, AWS (CodeCommit), Google Cloud Platform, Git, Salesforce, Pinecone, n8n
             </div>
             <div className="win95-inset p-3 bg-gray-50">
-              <strong className="text-orange-600">Tools & Platforms:</strong>
+              <strong className="text-orange-600">Specializations:</strong>
               <br />
-              Git, Docker, AWS, iOS Development, Push Notifications, MapKit,
-              CloudKit
+              CI/CD Pipelines, Test Automation, Web Development, AI/ML Integration, Mobile Development
             </div>
           </div>
         </div>
@@ -181,7 +167,7 @@ export const AboutWindow: React.FC = () => {
                 <div>
                   <strong className="text-blue-600">ClassFinder.ai</strong>
                   <p className="text-xs text-gray-600 mt-1">
-                    AI-powered course finding agent
+                    NLP search tool parsing conversational queries for class schedules
                   </p>
                 </div>
                 <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
@@ -193,25 +179,10 @@ export const AboutWindow: React.FC = () => {
               <div className="flex justify-between items-start">
                 <div>
                   <strong className="text-blue-600">
-                    Eureka - Campus Buddy!
+                    Eureka - Campus Social App
                   </strong>
                   <p className="text-xs text-gray-600 mt-1">
-                    iOS social networking app for college students
-                  </p>
-                </div>
-                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                  Completed
-                </span>
-              </div>
-            </div>
-            <div className="win95-inset p-3 bg-gray-50">
-              <div className="flex justify-between items-start">
-                <div>
-                  <strong className="text-blue-600">
-                    Diamond Price Predictor
-                  </strong>
-                  <p className="text-xs text-gray-600 mt-1">
-                    ML model with 97% accuracy
+                    Mobile app for student hangouts with 64 active users, 200+ events
                   </p>
                 </div>
                 <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
