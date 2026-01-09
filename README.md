@@ -20,9 +20,7 @@ This project is built using the following technologies:
 - **TypeScript**
 - **Vite**
 - **Tailwind CSS**
-- **shadcn/ui**
 - **VAPI** (Voice AI platform)
-- **Capacitor** (Mobile framework)
 - **Deployed on Firebase** (Hosting)
 
 ## Installation
