@@ -1,7 +1,7 @@
-import { Desktop } from '@/components/Desktop';
+import { ZinKhantPortfolio } from "@/components/ZinKhantPortfolio";
 
 const Index = () => {
-  return <Desktop />;
+  return <ZinKhantPortfolio />;
 };
 
 export default Index;
