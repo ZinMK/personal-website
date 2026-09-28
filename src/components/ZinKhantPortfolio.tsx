@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "@/styles/zin-khant.css";
+import { DecryptReveal } from "@/components/canvasui/DecryptReveal";
+import { ParticleScroll } from "@/components/canvasui/ParticleScroll";
 
 const workEntries = [
   {
@@ -272,7 +274,8 @@ export const ZinKhantPortfolio = () => {
           </div>
         </aside>
 
-        <main className="zk-content">
+        <main className="zk-content" style={{ height: "100vh", overflow: "hidden" }}>
+          <ParticleScroll style={{ height: "100%" }}>
           <section
             id="home"
             style={{
@@ -335,8 +338,9 @@ export const ZinKhantPortfolio = () => {
                   opacity: 0.8,
                 }}
               >
-                If I see a problem I can fix, I will. Speak to me about in meditation,
-                philosophy, music, or AI. I make music and more than anything, I want
+                Hi! I'm Zin. I'm studying CS @ University of St. Thomas. If I see a problem I can fix, I will. Throughout college that's all I have done. 
+                I love talking about about meditation,
+                philosophy, music, AI. I make music and more than anything, I want
                 the things I build to connect people.
               </p>
             </div>
@@ -519,7 +523,31 @@ export const ZinKhantPortfolio = () => {
 
             <div style={{ borderTop: "1px solid var(--line)" }} />
 
-            <div className="zk-work-scroll">
+            <DecryptReveal
+              className="zk-work-scroll"
+              style={{ height: "36vh" }}
+              radius={400}
+              softness={0.5}
+              cell={10}
+              aspect={0.75}
+              colored={1}
+              brightness={1}
+              legibility={1}
+              contrast={1}
+              exposure={1}
+              scramble={0.1}
+              scrambleSpeed={6}
+              edgeWidth={0.2}
+              edgeFlicker={1}
+              edgeGlow={2}
+              edgeTint={0.75}
+              aberration={10}
+              passthrough={0.15}
+              threshold={0.025}
+              smoothing={0.2}
+              color="#ff5500"
+              background="#0e0e0d"
+            >
               {workEntries.map((entry, i) => (
                 <article
                 key={entry.title}
@@ -606,7 +634,7 @@ export const ZinKhantPortfolio = () => {
                 </p>
               </article>
               ))}
-            </div>
+            </DecryptReveal>
           </section>
 
           <section
@@ -673,6 +701,7 @@ export const ZinKhantPortfolio = () => {
               Back to top ↑
             </a>
           </footer>
+          </ParticleScroll>
         </main>
       </div>
     </div>
