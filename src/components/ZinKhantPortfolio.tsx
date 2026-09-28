@@ -422,7 +422,7 @@ export const ZinKhantPortfolio = () => {
                   padding: "clamp(16px,2.5vw,24px) 0",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 12,
+                  gap: 16,
                 }}
               >
                 <div
