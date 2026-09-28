@@ -74,22 +74,43 @@ const workEntries = [
 
 const experienceEntries = [
   {
-    title: "Product Manager Intern",
-    company: "Cloudflare",
-    location: "San Francisco",
-    period: "Summer 2026",
+    title: "Computer Science Tutor",
+    org: "University of St. Thomas",
+    period: "Feb 2025 — Present",
+    details: [
+      "Mentor students in core CS concepts including Data Structures, Algorithms, and Software Design.",
+      "Facilitate technical problem-solving sessions, helping peers debug complex logic in Java, Python, and C.",
+    ],
   },
   {
-    title: "Software Engineering Intern",
-    company: "Travelers Insurance",
-    location: "Minneapolis",
-    period: "Summer 2025",
+    title: "Technical Product Manager Intern",
+    org: "Custom AI Studio",
+    period: "Dec 2024 — Feb 2025",
+    details: [
+      "Acted as Technical PM for a team of 3 engineering interns, managing the roadmap and delivery of a macOS MVP application.",
+      "Defined product requirements and utilized Agile sprints to deliver the project 100% on schedule.",
+      "Conducted user analysis to identify friction points, implementing a DeepGram API solution that saved users 10 hours of manual work per week.",
+    ],
   },
   {
-    title: "Software Engineering Intern",
-    company: "SASSA",
-    location: "Minneapolis",
-    period: "2024",
+    title: "Software and Cloud Intern",
+    org: "University of St. Thomas",
+    period: "Oct 2024 — Present",
+    details: [
+      "Standardized UI consistency across university assets, collaborating with stakeholders for 100% design compliance.",
+      "Optimized DevEx by architecting reusable components, reducing feature implementation time by 60%.",
+      "Modernized infrastructure with CI/CD pipelines, reducing production deployment time from 1 hour to 15 mins.",
+    ],
+  },
+  {
+    title: "Founder & President",
+    org: "Nexus AI Club",
+    period: "June 2023 — Present",
+    details: [
+      "Founded the university's first AI organization to address the curriculum gap in LLMs.",
+      "Organized the campus's first 24-hour AI hackathon sponsored by Anthropic; managed $6k in prize distribution and coordinated logistics for 50+ participants.",
+      "Defined product vision for club management, overseeing a TypeScript tool that reduced planning time by 50%.",
+    ],
   },
 ];
 
