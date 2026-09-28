@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "@/styles/zin-khant.css";
-import { DecryptReveal } from "@/components/canvasui/DecryptReveal";
-import { ParticleScroll } from "@/components/canvasui/ParticleScroll";
+import { SandScroll } from "@/components/canvasui/SandScroll";
+import { useTextScramble } from "@/components/canvasui/TextScramble";
 
 const workEntries = [
   {
