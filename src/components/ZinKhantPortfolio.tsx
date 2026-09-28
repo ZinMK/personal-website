@@ -523,31 +523,7 @@ export const ZinKhantPortfolio = () => {
 
             <div style={{ borderTop: "1px solid var(--line)" }} />
 
-            <DecryptReveal
-              className="zk-work-scroll"
-              style={{ height: "36vh" }}
-              radius={400}
-              softness={0.5}
-              cell={10}
-              aspect={0.75}
-              colored={1}
-              brightness={1}
-              legibility={1}
-              contrast={1}
-              exposure={1}
-              scramble={0.1}
-              scrambleSpeed={6}
-              edgeWidth={0.2}
-              edgeFlicker={1}
-              edgeGlow={2}
-              edgeTint={0.75}
-              aberration={10}
-              passthrough={0.15}
-              threshold={0.025}
-              smoothing={0.2}
-              color="#ff5500"
-              background="#0e0e0d"
-            >
+            <div className="zk-work-scroll">
               {workEntries.map((entry, i) => (
                 <article
                 key={entry.title}
