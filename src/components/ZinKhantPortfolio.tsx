@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "@/styles/zin-khant.css";
 
 const BOOK_CALL_URL = "https://calendar.app.google/gjUdYkUXZkfrSSV47";
@@ -84,8 +84,15 @@ const displayStyle = {
   textTransform: "var(--display-transform)" as const,
 };
 
+const NAV_ITEMS = [
+  { id: "home", label: "home" },
+  { id: "work", label: "work" },
+  { id: "reach", label: "contact" },
+];
+
 export const ZinKhantPortfolio = () => {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const root = rootRef.current;
@@ -133,8 +140,28 @@ export const ZinKhantPortfolio = () => {
     const fallback = window.setTimeout(() => els.forEach(show), 1200);
     window.addEventListener("resize", showInView);
 
+    // Active-section tracking for the sidebar
+    const sections = NAV_ITEMS.map((item) =>
+      document.getElementById(item.id),
+    ).filter((el): el is HTMLElement => Boolean(el));
+
+    let sectionIo: IntersectionObserver | undefined;
+    if ("IntersectionObserver" in window && sections.length) {
+      sectionIo = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) setActiveSection(visible.target.id);
+        },
+        { threshold: [0.15, 0.4], rootMargin: "-10% 0px -30% 0px" },
+      );
+      sections.forEach((el) => sectionIo?.observe(el));
+    }
+
     return () => {
       io?.disconnect();
+      sectionIo?.disconnect();
       window.clearTimeout(fallback);
       window.removeEventListener("resize", showInView);
     };
@@ -142,402 +169,232 @@ export const ZinKhantPortfolio = () => {
 
   return (
     <div id="zk-root" ref={rootRef} className="zk-page">
-      <section
-        data-screen-label="Hero"
-        style={{
-          maxWidth: 1320,
-          margin: "0 auto",
-          padding:
-            "clamp(48px,9vh,104px) clamp(20px,5vw,72px) clamp(40px,7vh,80px)",
-          display: "flex",
-          flexDirection: "column",
-          gap: "clamp(28px,5vh,56px)",
-        }}
-      >
-        <div data-reveal>
-          <span style={{ fontFamily: "var(--font-my)", lineHeight: 1 }}>
-            မင်္ဂလာပါ/Welcome
-          </span>
-        </div>
-
-        <div data-reveal>
-          <h1
-            style={{
-              margin: 0,
-              ...displayStyle,
-              fontSize: "clamp(64px, 12vw, 134px)",
-              lineHeight: 0.9,
-            }}
-          >
+      <div className="zk-layout">
+        <aside className="zk-sidebar">
+          <a href="#home" className="zk-sidebar-name">
             Zin Khant
-          </h1>
-          <p
-            style={{
-              margin: "10px 0 0",
-              fontFamily: "var(--font-my)",
-              fontSize: "clamp(18px, 2.5vw, 28px)",
-              opacity: 0.5,
-              lineHeight: 1.2,
-            }}
-          >
-            ဇင်မင်းခန့်
-          </p>
-        </div>
-
-        <div
-          data-reveal
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "clamp(24px,5vw,72px)",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(16px,2.5vh,28px)",
-              maxWidth: "62ch",
-              flex: "1 1 280px",
-            }}
-          >
-            <h2
-              style={{
-                margin: 0,
-                ...displayStyle,
-                fontSize: "clamp(28px,4.5vw,52px)",
-                lineHeight: 1.04,
-              }}
-            >
-              I like building.
-            </h2>
-            <p
-              style={{
-                margin: 0,
-                fontSize: "clamp(16px,1.8vw,20px)",
-                lineHeight: 1.6,
-                opacity: 0.8,
-              }}
-            >
-              If I see a problem I can fix, I will. Speak to me about in meditation,
-              philosophy, music, or AI. I make music and more than anything, I want
-              the things I build to connect people.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-              {["Building", "Meditation", "Philosophy", "Music", "AI"].map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 12,
-                    textTransform: "uppercase",
-                    letterSpacing: ".08em",
-                    padding: "7px 14px",
-                    border: "1px solid var(--line)",
-                    borderRadius: 100,
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+          </a>
+          <nav aria-label="Site">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="zk-side-link"
+                {...(activeSection === item.id ? { "data-active": "" } : {})}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="zk-side-status">
+            <span className="zk-status-row">
+              <span
+                style={{
+                  width: 7,
+                  height: 7,
+                  borderRadius: "50%",
+                  background: "var(--muted)",
+                  flexShrink: 0,
+                }}
+              />
+              Saint Paul, MN
+            </span>
+            <span className="zk-status-row">
+              <span className="zk-pulse-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff5500", flexShrink: 0 }} />
+              PM Intern · Cloudflare
+            </span>
           </div>
+        </aside>
 
-          <div
+        <main className="zk-content">
+          <section
+            id="home"
             style={{
+              padding:
+                "clamp(48px,10vh,110px) clamp(24px,5vw,64px) clamp(40px,7vh,80px)",
               display: "flex",
               flexDirection: "column",
-              gap: 11,
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              flexShrink: 0,
+              gap: "clamp(28px,5vh,56px)",
             }}
           >
-            {[
-              { label: "Saint Paul, MN", color: "var(--muted)", pulse: false },
-              {
-                label: "Product Manager Intern · Cloudflare",
-                color: "#ff5500",
-                pulse: true,
-              },
-              { label: "Founder · Nexus AI Club", color: "var(--muted)", pulse: false },
-            ].map((item) => (
-              <div
-                key={item.label}
+            <div data-reveal>
+              <span style={{ fontFamily: "var(--font-my)", lineHeight: 1 }}>
+                မင်္ဂလာပါ/Welcome
+              </span>
+            </div>
+
+            <div data-reveal>
+              <h1
+                style={{
+                  margin: 0,
+                  ...displayStyle,
+                  fontSize: "clamp(56px, 9vw, 110px)",
+                  lineHeight: 0.9,
+                }}
+              >
+                Zin Khant
+              </h1>
+              <p
+                style={{
+                  margin: "10px 0 0",
+                  fontFamily: "var(--font-my)",
+                  fontSize: "clamp(18px, 2.5vw, 28px)",
+                  opacity: 0.5,
+                  lineHeight: 1.2,
+                }}
+              >
+                ဇင်မင်းခန့်
+              </p>
+            </div>
+
+            <div data-reveal style={{ maxWidth: "62ch" }}>
+              <h2
+                style={{
+                  margin: 0,
+                  ...displayStyle,
+                  fontSize: "clamp(28px,4.5vw,52px)",
+                  lineHeight: 1.04,
+                }}
+              >
+                I like building.
+              </h2>
+              <p
+                style={{
+                  margin: "16px 0 0",
+                  fontSize: "clamp(16px,1.8vw,20px)",
+                  lineHeight: 1.6,
+                  opacity: 0.8,
+                }}
+              >
+                If I see a problem I can fix, I will. Speak to me about in meditation,
+                philosophy, music, or AI. I make music and more than anything, I want
+                the things I build to connect people.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 20 }}>
+                {["Building", "Meditation", "Philosophy", "Music", "AI"].map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      textTransform: "uppercase",
+                      letterSpacing: ".08em",
+                      padding: "7px 14px",
+                      border: "1px solid var(--line)",
+                      borderRadius: 100,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div id="contact" className="zk-current-work zk-current-work-hero">
+              <div className="zk-current-work-label">
+                <span className="zk-current-work-dot" aria-hidden="true" />
+                <span>What I&apos;m working on right now</span>
+              </div>
+              <p>{CURRENT_WORK_TEXT}</p>
+              <a
+                href={BOOK_CALL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="zk-hover-opacity zk-current-work-cta"
+              >
+                Book a call with me ↗
+              </a>
+            </div>
+          </section>
+
+          <section
+            id="about"
+            style={{
+              padding:
+                "clamp(32px,5vh,56px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
+              scrollMarginTop: 24,
+            }}
+          >
+            <div data-reveal>
+              <a
+                href="https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="zk-hover-opacity-65"
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 9,
-                  color: item.color,
-                }}
-              >
-                <span
-                  className={item.pulse ? "zk-pulse-dot" : undefined}
-                  style={{
-                    width: 8,
-                    height: 8,
-                    flexShrink: 0,
-                    borderRadius: "50%",
-                    background: item.pulse ? "var(--ink)" : "var(--muted)",
-                  }}
-                />
-                {item.label}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <nav
-          data-reveal
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            borderTop: "1px solid var(--line)",
-            marginTop: "clamp(8px,2vh,20px)",
-          }}
-        >
-          {[
-            { href: "#about", num: "၀၁", label: "About", bg: "#FECB00", color: "#141413" },
-            { href: "#work", num: "၀၂", label: "Work", bg: "#34B233", color: "#ffffff" },
-            { href: "#contact", num: "၀၃", label: "Contact", bg: "#EA2839", color: "#ffffff" },
-          ].map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="zk-nav-link"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 16,
-                padding: "clamp(16px,2.4vh,24px) 0",
-                borderBottom: "1px solid var(--line)",
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <span style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
-                <span
-                  style={{
-                    fontFamily: "var(--font-my)",
-                    fontSize: 13,
-                    padding: "3px 9px",
-                    borderRadius: 6,
-                    background: item.bg,
-                    color: item.color,
-                  }}
-                >
-                  {item.num}
-                </span>
-                <span style={{ ...displayStyle, fontSize: "clamp(22px,3vw,34px)" }}>
-                  {item.label}
-                </span>
-              </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 14, opacity: 0.45 }}>
-                ↗
-              </span>
-            </a>
-          ))}
-        </nav>
-
-        <div id="contact" className="zk-current-work zk-current-work-hero">
-          <div className="zk-current-work-label">
-            <span className="zk-current-work-dot" aria-hidden="true" />
-            <span>What I&apos;m working on right now</span>
-          </div>
-          <p>{CURRENT_WORK_TEXT}</p>
-          <a
-            href={BOOK_CALL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="zk-hover-opacity zk-current-work-cta"
-          >
-            Book a call with me ↗
-          </a>
-        </div>
-      </section>
-
-      <section
-        data-screen-label="About"
-        id="about"
-        style={{
-          maxWidth: 1320,
-          margin: "0 auto",
-          padding:
-            "clamp(32px,5vh,56px) clamp(20px,5vw,72px) clamp(40px,6vh,72px)",
-          scrollMarginTop: 24,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "clamp(32px,5vh,56px)",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(24px,3vh,36px)",
-            }}
-          >
-          <a
-            data-reveal
-            href="https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="zk-hover-opacity-65"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-              textDecoration: "none",
-              color: "inherit",
-              borderTop: "1px solid var(--line)",
-              paddingTop: "clamp(20px,3vh,28px)",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: ".16em",
-                color: "var(--muted)",
-              }}
-            >
-              CHECK OUT SOME OF MY TUNES
-            </span>
-            <span style={{ flex: 1, height: 1, background: "var(--line)" }} />
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "clamp(16px,2vw,22px)" }}>
-              Listen on Spotify ↗
-            </span>
-          </a>
-
-          <iframe
-            title="Zin Khant on Spotify"
-            style={{
-              borderRadius: 12,
-              border: "1px solid var(--line)",
-              width: "100%",
-              height: "clamp(352px, 40vh, 480px)",
-              display: "block",
-            }}
-            src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          />
-          </div>
-        </div>
-      </section>
-
-      <section
-        data-screen-label="Work"
-        id="work"
-        style={{
-          maxWidth: 1320,
-          margin: "0 auto",
-          padding:
-            "clamp(56px,9vh,112px) clamp(20px,5vw,72px) clamp(40px,6vh,72px)",
-          scrollMarginTop: 24,
-        }}
-      >
-        <div
-          data-reveal
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            alignItems: "baseline",
-            justifyContent: "space-between",
-            marginBottom: "clamp(20px,4vh,44px)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-            <span style={{ fontFamily: "var(--font-my)", fontSize: 14, opacity: 0.5 }}>
-              ၀၂
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 13,
-                textTransform: "uppercase",
-                letterSpacing: ".18em",
-                color: "var(--muted)",
-              }}
-            >
-              Index — Work
-            </span>
-          </div>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 12,
-              textTransform: "uppercase",
-              letterSpacing: ".08em",
-              opacity: 0.5,
-            }}
-          >
-            Five entries · 2024–2025
-          </span>
-        </div>
-
-        {workEntries.map((entry) => (
-          <article
-            key={entry.title}
-            data-reveal
-            style={{
-              borderTop: "1px solid var(--line)",
-              borderBottom: entry.last ? "1px solid var(--line)" : undefined,
-              padding: "clamp(26px,4vw,46px) 0",
-              display: "flex",
-              flexDirection: "column",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "clamp(12px,3vw,36px)",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: 16,
-                  flex: 1,
-                  minWidth: 240,
+                  gap: 14,
+                  textDecoration: "none",
+                  color: "inherit",
+                  borderTop: "1px solid var(--line)",
+                  paddingTop: "clamp(20px,3vh,28px)",
                 }}
               >
                 <span
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: 13,
-                    opacity: 0.4,
-                    whiteSpace: "nowrap",
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: ".16em",
+                    color: "var(--muted)",
                   }}
                 >
-                  <span style={{ fontFamily: "var(--font-my)" }}>{entry.num}</span> /{" "}
-                  {entry.numEn}
+                  CHECK OUT SOME OF MY TUNES
                 </span>
-                <h3
-                  style={{
-                    margin: 0,
-                    ...displayStyle,
-                    fontSize: "clamp(26px,4.4vw,52px)",
-                    lineHeight: 1.02,
-                  }}
-                >
-                  {entry.title}
-                </h3>
-              </div>
+                <span style={{ flex: 1, height: 1, background: "var(--line)" }} />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "clamp(16px,2vw,22px)" }}>
+                  Listen on Spotify ↗
+                </span>
+              </a>
+
+              <iframe
+                title="Zin Khant on Spotify"
+                style={{
+                  borderRadius: 12,
+                  border: "1px solid var(--line)",
+                  width: "100%",
+                  height: "clamp(352px, 40vh, 480px)",
+                  display: "block",
+                  marginTop: 20,
+                }}
+                src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              />
+            </div>
+          </section>
+
+          <section
+            id="work"
+            style={{
+              padding:
+                "clamp(56px,9vh,112px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
+              scrollMarginTop: 24,
+            }}
+          >
+            <div
+              data-reveal
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 16,
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                marginBottom: "clamp(20px,4vh,44px)",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  letterSpacing: ".18em",
+                  color: "var(--muted)",
+                }}
+              >
+                Index — Work
+              </span>
               <span
                 style={{
                   fontFamily: "var(--font-mono)",
@@ -545,246 +402,308 @@ export const ZinKhantPortfolio = () => {
                   textTransform: "uppercase",
                   letterSpacing: ".08em",
                   opacity: 0.5,
-                  whiteSpace: "nowrap",
                 }}
               >
-                {entry.year}
+                Five entries · 2024–2025
               </span>
             </div>
 
-            <p
-              style={{
-                margin: 0,
-                fontSize: "clamp(15px,1.7vw,19px)",
-                lineHeight: 1.55,
-                maxWidth: "60ch",
-                opacity: 0.72,
-              }}
-            >
-              {entry.description}
-            </p>
-
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-              {entry.tags.map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    textTransform: "uppercase",
-                    letterSpacing: ".08em",
-                    padding: "5px 11px",
-                    border: "1px solid var(--line)",
-                    borderRadius: 100,
-                    opacity: 0.8,
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-              {entry.href && (
-                <a
-                  href={entry.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="zk-hover-opacity"
-                  style={{
-                    marginLeft: "auto",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 12,
-                    textDecoration: "none",
-                    color: "inherit",
-                    borderBottom: "1px solid currentColor",
-                    paddingBottom: 2,
-                    opacity: 0.85,
-                  }}
-                >
-                  Visit ↗
-                </a>
-              )}
-            </div>
-
-            <details>
-              <summary
-                className="zk-hover-opacity"
+            {workEntries.map((entry) => (
+              <article
+                key={entry.title}
+                data-reveal
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: ".1em",
-                  opacity: 0.65,
-                  width: "max-content",
-                }}
-              >
-                <span data-closed-label>Read more ↓</span>
-                <span data-open-label>Show less ↑</span>
-              </summary>
-              <div
-                data-detail
-                style={{
-                  paddingTop: 16,
+                  borderTop: "1px solid var(--line)",
+                  borderBottom: entry.last ? "1px solid var(--line)" : undefined,
+                  padding: "clamp(26px,4vw,46px) 0",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 11,
-                  maxWidth: "62ch",
+                  gap: 16,
                 }}
               >
-                {entry.details.map((detail) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "clamp(12px,3vw,36px)",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <div
-                    key={detail}
                     style={{
                       display: "flex",
-                      gap: 12,
-                      fontSize: "clamp(14px,1.6vw,17px)",
-                      lineHeight: 1.5,
-                      opacity: 0.72,
+                      alignItems: "baseline",
+                      gap: 16,
+                      flex: 1,
+                      minWidth: 240,
                     }}
                   >
-                    <span style={{ opacity: 0.45 }}>—</span>
-                    <span>{detail}</span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 13,
+                        opacity: 0.4,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <span style={{ fontFamily: "var(--font-my)" }}>{entry.num}</span> /{" "}
+                      {entry.numEn}
+                    </span>
+                    <h3
+                      style={{
+                        margin: 0,
+                        ...displayStyle,
+                        fontSize: "clamp(26px,4.4vw,52px)",
+                        lineHeight: 1.02,
+                      }}
+                    >
+                      {entry.title}
+                    </h3>
                   </div>
-                ))}
-              </div>
-            </details>
-          </article>
-        ))}
-      </section>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      textTransform: "uppercase",
+                      letterSpacing: ".08em",
+                      opacity: 0.5,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {entry.year}
+                  </span>
+                </div>
 
-      <section
-        data-screen-label="Contact"
-        id="reach"
-        style={{
-          maxWidth: 1320,
-          margin: "0 auto",
-          padding: "clamp(72px,12vh,150px) clamp(20px,5vw,72px)",
-          scrollMarginTop: 24,
-          display: "flex",
-          flexDirection: "column",
-          gap: "clamp(28px,5vh,52px)",
-        }}
-      >
-        <div data-reveal style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-          <span style={{ fontFamily: "var(--font-my)", fontSize: 14, opacity: 0.5 }}>
-            ၀၃
-          </span>
-          <span
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "clamp(15px,1.7vw,19px)",
+                    lineHeight: 1.55,
+                    maxWidth: "60ch",
+                    opacity: 0.72,
+                  }}
+                >
+                  {entry.description}
+                </p>
+
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+                  {entry.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 11,
+                        textTransform: "uppercase",
+                        letterSpacing: ".08em",
+                        padding: "5px 11px",
+                        border: "1px solid var(--line)",
+                        borderRadius: 100,
+                        opacity: 0.8,
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {entry.href && (
+                    <a
+                      href={entry.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="zk-hover-opacity"
+                      style={{
+                        marginLeft: "auto",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 12,
+                        textDecoration: "none",
+                        color: "inherit",
+                        borderBottom: "1px solid currentColor",
+                        paddingBottom: 2,
+                        opacity: 0.85,
+                      }}
+                    >
+                      Visit ↗
+                    </a>
+                  )}
+                </div>
+
+                <details>
+                  <summary
+                    className="zk-hover-opacity"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      textTransform: "uppercase",
+                      letterSpacing: ".1em",
+                      opacity: 0.65,
+                      width: "max-content",
+                    }}
+                  >
+                    <span data-closed-label>Read more ↓</span>
+                    <span data-open-label>Show less ↑</span>
+                  </summary>
+                  <div
+                    data-detail
+                    style={{
+                      paddingTop: 16,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 11,
+                      maxWidth: "62ch",
+                    }}
+                  >
+                    {entry.details.map((detail) => (
+                      <div
+                        key={detail}
+                        style={{
+                          display: "flex",
+                          gap: 12,
+                          fontSize: "clamp(14px,1.6vw,17px)",
+                          lineHeight: 1.5,
+                          opacity: 0.72,
+                        }}
+                      >
+                        <span style={{ opacity: 0.45 }}>—</span>
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </article>
+            ))}
+          </section>
+
+          <section
+            id="reach"
             style={{
+              padding: "clamp(72px,12vh,150px) clamp(24px,5vw,64px)",
+              scrollMarginTop: 24,
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(28px,5vh,52px)",
+            }}
+          >
+            <div data-reveal style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  letterSpacing: ".18em",
+                  color: "var(--muted)",
+                }}
+              >
+                Index — Contact
+              </span>
+            </div>
+
+            <h2
+              data-reveal
+              style={{
+                margin: 0,
+                ...displayStyle,
+                fontSize: "clamp(44px,9vw,128px)",
+                lineHeight: 0.95,
+              }}
+            >
+              hit my jack at
+            </h2>
+
+            <a
+              data-reveal
+              href="mailto:shanunapal@gmail.com"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "clamp(20px,3.4vw,36px)",
+                color: "inherit",
+                borderBottom: "2px solid currentColor",
+                paddingBottom: 4,
+                alignSelf: "flex-start",
+                textDecoration: "none",
+              }}
+            >
+              shanunapal@gmail.com
+            </a>
+
+            <div
+              data-reveal
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "clamp(16px,3vw,40px)",
+                borderTop: "1px solid var(--line)",
+                paddingTop: "clamp(24px,3vh,36px)",
+              }}
+            >
+              {[
+                {
+                  label: "LinkedIn ↗",
+                  href: "https://www.linkedin.com/in/zin-khant-993055216",
+                },
+                { label: "X / Twitter ↗", href: "https://x.com/zinnMK_" },
+                {
+                  label: "Spotify ↗",
+                  href: "https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw",
+                },
+                { label: "Email ↗", href: "mailto:shanunapal@gmail.com" },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  className="zk-hover-opacity"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 14,
+                    textTransform: "uppercase",
+                    letterSpacing: ".08em",
+                    color: "inherit",
+                    textDecoration: "none",
+                    opacity: 0.7,
+                  }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <footer
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 16,
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "clamp(28px,4vh,48px) clamp(24px,5vw,64px)",
+              borderTop: "1px solid var(--line)",
               fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              textTransform: "uppercase",
-              letterSpacing: ".18em",
+              fontSize: 12,
+              letterSpacing: ".04em",
               color: "var(--muted)",
             }}
           >
-            Index — Contact
-          </span>
-        </div>
-
-        <h2
-          data-reveal
-          style={{
-            margin: 0,
-            ...displayStyle,
-            fontSize: "clamp(44px,9vw,128px)",
-            lineHeight: 0.95,
-          }}
-        >
-          hit my jack at
-        </h2>
-
-        <a
-          data-reveal
-          href="mailto:shanunapal@gmail.com"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(20px,3.4vw,36px)",
-            color: "inherit",
-            borderBottom: "2px solid currentColor",
-            paddingBottom: 4,
-            alignSelf: "flex-start",
-            textDecoration: "none",
-          }}
-        >
-          shanunapal@gmail.com
-        </a>
-
-        <div
-          data-reveal
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "clamp(16px,3vw,40px)",
-            borderTop: "1px solid var(--line)",
-            paddingTop: "clamp(24px,3vh,36px)",
-          }}
-        >
-          {[
-            {
-              label: "LinkedIn ↗",
-              href: "https://www.linkedin.com/in/zin-khant-993055216",
-            },
-            { label: "X / Twitter ↗", href: "https://x.com/zinnMK_" },
-            {
-              label: "Spotify ↗",
-              href: "https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw",
-            },
-            { label: "Email ↗", href: "mailto:shanunapal@gmail.com" },
-          ].map((link) => (
+            <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontFamily: "var(--font-my)", fontSize: 13 }}>
+                ကျေးဇူးတင်ပါတယ်
+              </span>
+              <span>· Thank you</span>
+            </span>
+            <span>© 2026 Zin Khant — Saint Paul, MN</span>
             <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-              className="zk-hover-opacity"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                fontFamily: "var(--font-mono)",
-                fontSize: 14,
-                textTransform: "uppercase",
-                letterSpacing: ".08em",
-                color: "inherit",
-                textDecoration: "none",
-                opacity: 0.7,
-              }}
+              href="#home"
+              className="zk-hover-ink"
+              style={{ color: "inherit", textDecoration: "none" }}
             >
-              {link.label}
+              Back to top ↑
             </a>
-          ))}
-        </div>
-      </section>
-
-      <footer
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 16,
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "clamp(28px,4vh,48px) clamp(20px,5vw,72px)",
-          borderTop: "1px solid var(--line)",
-          fontFamily: "var(--font-mono)",
-          fontSize: 12,
-          letterSpacing: ".04em",
-          color: "var(--muted)",
-        }}
-      >
-        <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontFamily: "var(--font-my)", fontSize: 13 }}>
-            ကျေးဇူးတင်ပါတယ်
-          </span>
-          <span>· Thank you</span>
-        </span>
-        <span>© 2026 Zin Khant — Saint Paul, MN</span>
-        <a
-          href="#zk-root"
-          className="zk-hover-ink"
-          style={{ color: "inherit", textDecoration: "none" }}
-        >
-          Back to top ↑
-        </a>
-      </footer>
+          </footer>
+        </main>
+      </div>
     </div>
   );
 };
