@@ -8,13 +8,9 @@ const workEntries = [
     title: "Classfinder.ai",
     year: "2025 · Search",
     description:
-      "A natural-language course search engine that helps students find the right classes in plain English.",
+      "A natural-language course search engine serving 70+ active users, with Rate My Professors data built in and A/B-tested RAG vs. hybrid search for maximum relevance.",
     tags: ["React", "TypeScript", "Cloudflare Workers", "Go"],
     href: "https://classfinder.ai",
-    details: [
-      "Serving 70+ active users; integrated Rate My Professors data to streamline the course-selection process.",
-      "Ran A/B tests on RAG vs. hybrid search algorithms to maximize relevance and overall UX.",
-    ],
   },
   {
     num: "၀၂",
@@ -22,12 +18,8 @@ const workEntries = [
     title: "YC Agentic Payments",
     year: "2025 · Winner",
     description:
-      "An autonomous payments agent that placed top 10 of 14k+ applicants at Stripe's YC hackathon.",
+      "An autonomous payments agent that placed top 10 of 14k+ applicants at Stripe's YC hackathon — an x402 AI agent that ran conversational surveys and paid users based on feedback quality.",
     tags: ["Stripe API", "LLMs", "TypeScript", "x402"],
-    details: [
-      "Placed top 10 from 14k+ applicants building autonomous payment solutions, sponsored by Stripe.",
-      "Architected an AI agent on the x402 protocol that ran conversational surveys and paid users based on feedback quality.",
-    ],
   },
   {
     num: "၀၃",
@@ -35,13 +27,9 @@ const workEntries = [
     title: "Mow Manager",
     year: "2025 · Agent",
     description:
-      "A vertical AI agent that runs a real mowing business — handling billing, scheduling, and customer comms.",
+      "A vertical AI agent running a real $10k/month mowing business — Stripe billing and Twilio comms cut administrative overhead by 95%.",
     tags: ["React", "Stripe API", "SQL", "Twilio"],
     href: "https://mow-manager.web.app",
-    details: [
-      "Engineered a vertical AI agent managing a mowing business generating $10k/month in revenue.",
-      "Integrated Stripe for automated billing and Twilio for comms, cutting administrative overhead by 95%.",
-    ],
   },
   {
     num: "၀၄",
@@ -49,12 +37,8 @@ const workEntries = [
     title: "Eureka Campus Buddy",
     year: "2024 · iOS",
     description:
-      "An iOS app that brings campus social life together by organizing hangouts and events.",
+      "An iOS app bringing campus social life together through hangouts and events, onboarded 70+ users through organic growth.",
     tags: ["SwiftUI", "Firebase", "iOS"],
-    details: [
-      "Built and launched an iOS app to facilitate campus social life through hangouts and events.",
-      "Onboarded 70+ users through organic campus growth and user-centered design.",
-    ],
   },
   {
     num: "၀၅",
@@ -62,12 +46,8 @@ const workEntries = [
     title: "Tommie Compliments",
     year: "2024 · Web",
     description:
-      "An anonymous compliment-sharing platform built to foster a kinder, more connected campus.",
+      "An anonymous compliment-sharing platform fostering a kinder, more connected campus — a small experiment in making people feel seen.",
     tags: ["React", "Node.js", "SQL"],
-    details: [
-      "Designed and deployed an anonymous compliment-sharing platform to foster a positive campus culture.",
-      "A small experiment in using software to make people feel seen and bring a community closer.",
-    ],
     last: true,
   },
 ];
@@ -613,49 +593,6 @@ export const ZinKhantPortfolio = () => {
                 >
                   {entry.description}
                 </p>
-
-                <details>
-                  <summary
-                    className="zk-hover-opacity"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: ".1em",
-                      opacity: 0.65,
-                      width: "max-content",
-                    }}
-                  >
-                    <span data-closed-label>Read more ↓</span>
-                    <span data-open-label>Show less ↑</span>
-                  </summary>
-                  <div
-                    data-detail
-                    style={{
-                      paddingTop: 16,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 11,
-                      maxWidth: "62ch",
-                    }}
-                  >
-                    {entry.details.map((detail) => (
-                      <div
-                        key={detail}
-                        style={{
-                          display: "flex",
-                          gap: 12,
-                          fontSize: "clamp(14px,1.6vw,17px)",
-                          lineHeight: 1.5,
-                          opacity: 0.72,
-                        }}
-                      >
-                        <span style={{ opacity: 0.45 }}>—</span>
-                        <span>{detail}</span>
-                      </div>
-                    ))}
-                  </div>
-                </details>
               </article>
             ))}
           </section>
