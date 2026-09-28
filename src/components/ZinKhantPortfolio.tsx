@@ -399,7 +399,7 @@ export const ZinKhantPortfolio = () => {
                 textTransform: "uppercase",
                 letterSpacing: ".18em",
                 color: "var(--muted)",
-                marginBottom: "clamp(12px,2vh,24px)",
+                marginBottom: 12,
               }}
             >
               Work
@@ -419,7 +419,7 @@ export const ZinKhantPortfolio = () => {
                     i === experienceEntries.length - 1
                       ? "1px solid var(--line)"
                       : undefined,
-                  padding: "clamp(20px,3vw,32px) 0",
+                  padding: "clamp(16px,2.5vw,24px) 0",
                   display: "flex",
                   flexDirection: "column",
                   gap: 12,
@@ -514,11 +514,13 @@ export const ZinKhantPortfolio = () => {
                 textTransform: "uppercase",
                 letterSpacing: ".18em",
                 color: "var(--muted)",
-                marginBottom: "clamp(12px,2vh,24px)",
+                marginBottom: 12,
               }}
             >
               Projects
             </div>
+
+            <div style={{ borderTop: "1px solid var(--line)" }} />
 
             <div className="zk-work-scroll">
               {workEntries.map((entry) => (
