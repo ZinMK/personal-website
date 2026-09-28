@@ -74,42 +74,55 @@ const workEntries = [
 
 const experienceEntries = [
   {
-    title: "Computer Science Tutor",
-    org: "University of St. Thomas",
-    period: "Feb 2025 — Present",
+    title: "Product Manager Intern, Workers Observability",
+    org: "Cloudflare",
+    location: "Austin, TX",
+    period: "June 2026 – Aug. 2026",
     details: [
-      "Mentor students in core CS concepts including Data Structures, Algorithms, and Software Design.",
-      "Facilitate technical problem-solving sessions, helping peers debug complex logic in Java, Python, and C.",
+      "Owned local tracing for Workers from problem to launch — scoped an ambiguous observability gap, prototyped with engineers, and shipped automatic OpenTelemetry tracing in local dev so developers can debug without deploying.",
+      "Set an agent-first product direction: an API that lets AI coding agents query traces to find, fix, and verify bugs locally, positioning Workers for AI-assisted development.",
+      "Sourced and conducted 15+ customer research interviews with enterprise users including OpenAI and Contentful, turning findings into prioritized roadmap items.",
+      "Led design, build, and launch of a new Durable Objects UI with design and engineering, helping developers pinpoint and triage erroring actors faster.",
+      "Co-authored the launch blog post and docs, then iterated on shipped features using developer feedback from X.",
     ],
   },
   {
     title: "Technical Product Manager Intern",
     org: "Custom AI Studio",
-    period: "Dec 2024 — Feb 2025",
+    location: "Saint Paul, MN",
+    period: "Dec 2024 – Feb 2025",
     details: [
-      "Acted as Technical PM for a team of 3 engineering interns, managing the roadmap and delivery of a macOS MVP application.",
-      "Defined product requirements and utilized Agile sprints to deliver the project 100% on schedule.",
-      "Conducted user analysis to identify friction points, implementing a DeepGram API solution that saved users 10 hours of manual work per week.",
+      "Acted as Technical PM for a team of 3 engineering interns, owning the roadmap and end-to-end delivery of a macOS MVP on schedule.",
+      "Analyzed user friction points to make a data-driven build decision, shipping a DeepGram API solution that saved users 10 hours of manual work per week.",
     ],
   },
   {
     title: "Software and Cloud Intern",
     org: "University of St. Thomas",
-    period: "Oct 2024 — Present",
+    location: "Saint Paul, MN",
+    period: "Oct 2024 – Present",
     details: [
-      "Standardized UI consistency across university assets, collaborating with stakeholders for 100% design compliance.",
-      "Optimized DevEx by architecting reusable components, reducing feature implementation time by 60%.",
-      "Modernized infrastructure with CI/CD pipelines, reducing production deployment time from 1 hour to 15 mins.",
+      "Optimized developer experience by architecting reusable components, reducing feature implementation time by 60%.",
+      "Modernized infrastructure with CI/CD pipelines, cutting production deployment time from 1 hour to 15 minutes.",
     ],
   },
   {
     title: "Founder & President",
     org: "Nexus AI Club",
-    period: "June 2023 — Present",
+    location: "Saint Paul, MN",
+    period: "June 2023 – Present",
     details: [
-      "Founded the university's first AI organization to address the curriculum gap in LLMs.",
-      "Organized the campus's first 24-hour AI hackathon sponsored by Anthropic; managed $6k in prize distribution and coordinated logistics for 50+ participants.",
-      "Defined product vision for club management, overseeing a TypeScript tool that reduced planning time by 50%.",
+      "Founded the university's first AI organization to close the curriculum gap in LLMs; grew a community of 50+ members.",
+      "Organized the campus's first 24-hour AI hackathon sponsored by Anthropic; managed $6k in prize distribution and logistics.",
+    ],
+  },
+  {
+    title: "Committee Member",
+    org: "Aquinas AI Technical Committee, University of St. Thomas",
+    location: "Saint Paul, MN",
+    period: "",
+    details: [
+      "Serve on the university technical committee guiding campus-wide implementation of Aquinas AI.",
     ],
   },
 ];
