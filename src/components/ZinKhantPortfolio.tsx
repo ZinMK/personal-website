@@ -3,9 +3,6 @@ import "@/styles/zin-khant.css";
 
 const BOOK_CALL_URL = "https://calendar.app.google/gjUdYkUXZkfrSSV47";
 
-const CURRENT_WORK_TEXT =
-  "I'm a PM intern at Cloudflare, working on a better local development experience — adding local log tracing and improving observability for developers.";
-
 const workEntries = [
   {
     num: "၀၁",
