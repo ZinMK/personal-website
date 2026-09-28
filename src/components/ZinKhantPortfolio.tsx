@@ -701,9 +701,11 @@ export const ZinKhantPortfolio = () => {
               Back to top ↑
             </a>
           </footer>
-          </ParticleScroll>
+          </>
         </main>
       </div>
+
+      <SandScroll />
     </div>
   );
 };
