@@ -405,15 +405,98 @@ export const ZinKhantPortfolio = () => {
               Work
             </div>
 
+            <div
+              data-reveal
+              style={{
+                borderTop: "1px solid var(--line)",
+                borderBottom: "1px solid var(--line)",
+                padding: "clamp(20px,3vw,32px) 0",
+                display: "flex",
+                flexDirection: "column",
+                gap: 12,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "clamp(12px,3vw,36px)",
+                  alignItems: "baseline",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div style={{ minWidth: 240, flex: 1 }}>
+                  <h3
+                    style={{
+                      margin: 0,
+                      ...displayStyle,
+                      fontSize: "clamp(24px,3.2vw,36px)",
+                      lineHeight: 1.05,
+                    }}
+                  >
+                    {experienceEntries[0].title}
+                  </h3>
+                  <p
+                    style={{
+                      margin: "8px 0 0",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 13,
+                      color: "var(--muted)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span>{experienceEntries[0].org}</span>
+                    {experienceEntries[0].blog && (
+                      <>
+                        <span style={{ opacity: 0.4 }}>|</span>
+                        <a
+                          href={experienceEntries[0].blog}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: "#ff5500",
+                            textDecoration: "none",
+                            borderBottom: "1px solid currentColor",
+                            paddingBottom: 1,
+                          }}
+                        >
+                          Read Blog
+                        </a>
+                      </>
+                    )}
+                  </p>
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 12,
+                    textTransform: "uppercase",
+                    letterSpacing: ".08em",
+                    opacity: 0.5,
+                    whiteSpace: "nowrap",
+                    textAlign: "right",
+                  }}
+                >
+                  <div>{experienceEntries[0].location}</div>
+                  {experienceEntries[0].period && (
+                    <div style={{ marginTop: 6 }}>{experienceEntries[0].period}</div>
+                  )}
+                </div>
+              </div>
+            </div>
+
             <div className="zk-work-scroll">
-              {experienceEntries.map((job, i) => (
+              {experienceEntries.slice(1).map((job, i) => (
               <article
                 key={`${job.title}-${job.org}`}
                 data-reveal
                 style={{
                   borderTop: "1px solid var(--line)",
                   borderBottom:
-                    i === experienceEntries.length - 1
+                    i === experienceEntries.length - 2
                       ? "1px solid var(--line)"
                       : undefined,
                   padding: "clamp(20px,3vw,32px) 0",
