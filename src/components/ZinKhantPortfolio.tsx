@@ -674,7 +674,7 @@ export const ZinKhantPortfolio = () => {
 
             <a
               data-reveal
-              href="mailto:shanunapal@gmail.com"
+              href="mailto:khan4152@stthomas.edu"
               style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "clamp(18px,2.6vw,26px)",
@@ -685,7 +685,7 @@ export const ZinKhantPortfolio = () => {
                 textDecoration: "none",
               }}
             >
-              shanunapal@gmail.com
+              khan4152@stthomas.edu
             </a>
 
             <div
@@ -708,7 +708,6 @@ export const ZinKhantPortfolio = () => {
                   label: "Spotify ↗",
                   href: "https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw",
                 },
-                { label: "Email ↗", href: "mailto:shanunapal@gmail.com" },
               ].map((link) => (
                 <a
                   key={link.label}
