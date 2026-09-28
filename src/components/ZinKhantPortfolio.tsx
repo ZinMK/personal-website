@@ -228,8 +228,8 @@ export const ZinKhantPortfolio = () => {
                 style={{
                   margin: 0,
                   ...displayStyle,
-                  fontSize: "clamp(56px, 9vw, 110px)",
-                  lineHeight: 0.9,
+                  fontSize: "clamp(40px, 6vw, 68px)",
+                  lineHeight: 0.95,
                 }}
               >
                 Zin Khant
@@ -238,8 +238,7 @@ export const ZinKhantPortfolio = () => {
                 style={{
                   margin: "10px 0 0",
                   fontFamily: "var(--font-my)",
-                  fontSize: "clamp(18px, 2.5vw, 28px)",
-                  opacity: 0.5,
+                  fontSize: "clamp(16px, 2vw, 22px)",
                   lineHeight: 1.2,
                 }}
               >
@@ -252,7 +251,7 @@ export const ZinKhantPortfolio = () => {
                 style={{
                   margin: 0,
                   ...displayStyle,
-                  fontSize: "clamp(28px,4.5vw,52px)",
+                  fontSize: "clamp(26px,3.5vw,38px)",
                   lineHeight: 1.04,
                 }}
               >
@@ -454,8 +453,8 @@ export const ZinKhantPortfolio = () => {
                       style={{
                         margin: 0,
                         ...displayStyle,
-                        fontSize: "clamp(26px,4.4vw,52px)",
-                        lineHeight: 1.02,
+                        fontSize: "clamp(24px,3.2vw,36px)",
+                        lineHeight: 1.05,
                       }}
                     >
                       {entry.title}
@@ -602,8 +601,8 @@ export const ZinKhantPortfolio = () => {
               style={{
                 margin: 0,
                 ...displayStyle,
-                fontSize: "clamp(44px,9vw,128px)",
-                lineHeight: 0.95,
+                fontSize: "clamp(36px,6vw,68px)",
+                lineHeight: 0.98,
               }}
             >
               hit my jack at
@@ -614,7 +613,7 @@ export const ZinKhantPortfolio = () => {
               href="mailto:shanunapal@gmail.com"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "clamp(20px,3.4vw,36px)",
+                fontSize: "clamp(18px,2.6vw,26px)",
                 color: "inherit",
                 borderBottom: "2px solid currentColor",
                 paddingBottom: 4,
