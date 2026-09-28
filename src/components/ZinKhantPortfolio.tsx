@@ -362,28 +362,38 @@ export const ZinKhantPortfolio = () => {
               <div style={{ height: 1, background: "var(--line)", marginTop: "clamp(16px,3vh,28px)" }} />
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {experienceEntries.map((job) => (
+            {experienceEntries.map((job, i) => (
+              <article
+                key={`${job.title}-${job.org}`}
+                data-reveal
+                style={{
+                  borderTop: "1px solid var(--line)",
+                  borderBottom:
+                    i === experienceEntries.length - 1
+                      ? "1px solid var(--line)"
+                      : undefined,
+                  padding: "clamp(26px,4vw,46px) 0",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                }}
+              >
                 <div
-                  key={`${job.title}-${job.company}`}
-                  data-reveal
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
-                    gap: "clamp(8px,2vw,32px)",
+                    gap: "clamp(12px,3vw,36px)",
                     alignItems: "baseline",
                     justifyContent: "space-between",
-                    padding: "clamp(20px,3vh,32px) 0",
-                    borderBottom: "1px solid var(--line)",
                   }}
                 >
-                  <div>
+                  <div style={{ minWidth: 240, flex: 1 }}>
                     <h3
                       style={{
                         margin: 0,
                         ...displayStyle,
-                        fontSize: "clamp(20px,2.6vw,30px)",
-                        lineHeight: 1.1,
+                        fontSize: "clamp(24px,3.2vw,36px)",
+                        lineHeight: 1.05,
                       }}
                     >
                       {job.title}
@@ -396,27 +406,67 @@ export const ZinKhantPortfolio = () => {
                         color: "var(--muted)",
                       }}
                     >
-                      {job.company}
+                      {job.org}
                     </p>
                   </div>
-                  <div style={{ textAlign: "right", marginLeft: "auto" }}>
-                    <div style={{ fontSize: "clamp(14px,1.6vw,18px)" }}>
-                      {job.location}
-                    </div>
-                    <div
-                      style={{
-                        marginTop: 6,
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 12,
-                        color: "var(--muted)",
-                      }}
-                    >
-                      {job.period}
-                    </div>
-                  </div>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      textTransform: "uppercase",
+                      letterSpacing: ".08em",
+                      opacity: 0.5,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {job.period}
+                  </span>
                 </div>
-              ))}
-            </div>
+
+                <details>
+                  <summary
+                    className="zk-hover-opacity"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      textTransform: "uppercase",
+                      letterSpacing: ".1em",
+                      opacity: 0.65,
+                      width: "max-content",
+                    }}
+                  >
+                    <span data-closed-label>Read more ↓</span>
+                    <span data-open-label>Show less ↑</span>
+                  </summary>
+                  <div
+                    data-detail
+                    style={{
+                      paddingTop: 16,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 11,
+                      maxWidth: "62ch",
+                    }}
+                  >
+                    {job.details.map((detail) => (
+                      <div
+                        key={detail}
+                        style={{
+                          display: "flex",
+                          gap: 12,
+                          fontSize: "clamp(14px,1.6vw,17px)",
+                          lineHeight: 1.5,
+                          opacity: 0.72,
+                        }}
+                      >
+                        <span style={{ opacity: 0.45 }}>—</span>
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </article>
+            ))}
 
             <a
               data-reveal
