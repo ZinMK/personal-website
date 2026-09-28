@@ -460,7 +460,8 @@ export const ZinKhantPortfolio = () => {
                   </div>
                 </div>
               </article>
-            ))}
+              ))}
+            </div>
 
             <a
               data-reveal
