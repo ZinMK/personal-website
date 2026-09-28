@@ -523,12 +523,12 @@ export const ZinKhantPortfolio = () => {
             <div style={{ borderTop: "1px solid var(--line)" }} />
 
             <div className="zk-work-scroll">
-              {workEntries.map((entry) => (
+              {workEntries.map((entry, i) => (
                 <article
                 key={entry.title}
                 data-reveal
                 style={{
-                  borderTop: "1px solid var(--line)",
+                  borderTop: i === 0 ? undefined : "1px solid var(--line)",
                   borderBottom: entry.last ? "1px solid var(--line)" : undefined,
                   padding: "clamp(16px,2.5vw,24px) 0",
                   display: "flex",
