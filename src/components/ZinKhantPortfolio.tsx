@@ -454,6 +454,29 @@ export const ZinKhantPortfolio = () => {
                     {job.period && <div style={{ marginTop: 6 }}>{job.period}</div>}
                   </div>
                 </div>
+
+                {job.blog && (
+                  <a
+                    href={job.blog}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="zk-hover-ink"
+                    style={{
+                      alignSelf: "flex-start",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      textTransform: "uppercase",
+                      letterSpacing: ".08em",
+                      color: "inherit",
+                      textDecoration: "none",
+                      border: "1px solid var(--line)",
+                      borderRadius: 100,
+                      padding: "7px 16px",
+                    }}
+                  >
+                    Read Blog ↗
+                  </a>
+                )}
               </article>
               ))}
             </div>
