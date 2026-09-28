@@ -669,7 +669,7 @@ export const ZinKhantPortfolio = () => {
                 lineHeight: 0.98,
               }}
             >
-              hit my jack at
+              contact
             </h2>
 
             <a
@@ -687,51 +687,6 @@ export const ZinKhantPortfolio = () => {
             >
               khan4152@stthomas.edu
             </a>
-
-            <div
-              data-reveal
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "clamp(16px,3vw,40px)",
-                borderTop: "1px solid var(--line)",
-                paddingTop: "clamp(24px,3vh,36px)",
-              }}
-            >
-              {[
-                {
-                  label: "LinkedIn ↗",
-                  href: "https://www.linkedin.com/in/zin-khant-993055216",
-                },
-                { label: "X / Twitter ↗", href: "https://x.com/zinnMK_" },
-                {
-                  label: "Spotify ↗",
-                  href: "https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw",
-                },
-              ].map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                  className="zk-hover-opacity"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 14,
-                    textTransform: "uppercase",
-                    letterSpacing: ".08em",
-                    color: "inherit",
-                    textDecoration: "none",
-                    opacity: 0.7,
-                  }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
           </section>
 
           <footer
@@ -749,12 +704,6 @@ export const ZinKhantPortfolio = () => {
               color: "var(--muted)",
             }}
           >
-            <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontFamily: "var(--font-my)", fontSize: 13 }}>
-                ကျေးဇူးတင်ပါတယ်
-              </span>
-              <span>· Thank you</span>
-            </span>
             <span>© 2026 Zin Khant — Saint Paul, MN</span>
             <a
               href="#home"
