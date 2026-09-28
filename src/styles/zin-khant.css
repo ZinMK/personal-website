@@ -10,7 +10,7 @@ html {
   --line: rgba(242, 241, 237, 0.14);
   --muted: rgba(242, 241, 237, 0.55);
   --nav-active-bg: rgba(242, 241, 237, 0.1);
-  --font-display: "Instrument Serif", Georgia, serif;
+  --font-display: "Roboto Serif", Georgia, serif;
   --display-weight: 400;
   --display-spacing: -0.015em;
   --display-transform: none;
