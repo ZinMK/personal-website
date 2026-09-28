@@ -289,6 +289,7 @@ export const ZinKhantPortfolio = () => {
           >
             <div data-reveal>
               <h1
+                data-scramble
                 style={{
                   margin: 0,
                   ...displayStyle,
@@ -357,6 +358,7 @@ export const ZinKhantPortfolio = () => {
           >
             <div data-reveal>
               <span
+                data-scramble
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: 11,
@@ -395,6 +397,7 @@ export const ZinKhantPortfolio = () => {
           >
             <div
               data-reveal
+              data-scramble
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: 13,
@@ -510,6 +513,7 @@ export const ZinKhantPortfolio = () => {
           >
             <div
               data-reveal
+              data-scramble
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: 13,
@@ -626,6 +630,7 @@ export const ZinKhantPortfolio = () => {
           >
             <div
               data-reveal
+              data-scramble
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: 13,
