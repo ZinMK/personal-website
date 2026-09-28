@@ -166,9 +166,6 @@ export const ZinKhantPortfolio = () => {
     <div id="zk-root" ref={rootRef} className="zk-page">
       <div className="zk-layout">
         <aside className="zk-sidebar">
-          <a href="#home" className="zk-sidebar-name">
-            Zin Khant
-          </a>
           <nav aria-label="Site">
             {NAV_ITEMS.map((item) => (
               <a
@@ -212,7 +209,7 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(28px,5vh,56px)",
             }}
           >
-            <div data-reveal>
+            <div data-reveal style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 24 }}>
               <h1
                 style={{
                   margin: 0,
@@ -223,6 +220,17 @@ export const ZinKhantPortfolio = () => {
               >
                 Zin Khant
               </h1>
+              <img
+                src="/images/profile-pic.jpg"
+                alt="Zin Khant"
+                style={{
+                  width: "clamp(96px, 14vw, 150px)",
+                  height: "clamp(96px, 14vw, 150px)",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  flexShrink: 0,
+                }}
+              />
             </div>
 
             <div data-reveal style={{ maxWidth: "62ch" }}>
@@ -261,8 +269,6 @@ export const ZinKhantPortfolio = () => {
                   gap: 14,
                   textDecoration: "none",
                   color: "inherit",
-                  borderTop: "1px solid var(--line)",
-                  paddingTop: "clamp(20px,3vh,28px)",
                 }}
               >
                 <span
@@ -283,16 +289,16 @@ export const ZinKhantPortfolio = () => {
               </a>
 
               <iframe
+                data-testid="embed-iframe"
                 title="Zin Khant on Spotify"
                 style={{
                   borderRadius: 12,
-                  border: "1px solid var(--line)",
                   width: "100%",
-                  height: "clamp(352px, 40vh, 480px)",
+                  height: 352,
                   display: "block",
                   marginTop: 20,
                 }}
-                src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0"
+                src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0&si=eaf0addcfa9948db"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
               />
