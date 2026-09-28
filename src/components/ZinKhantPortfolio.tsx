@@ -164,6 +164,7 @@ const MailIcon = () => (
 export const ZinKhantPortfolio = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState("home");
+  useTextScramble(rootRef);
 
   useEffect(() => {
     const root = rootRef.current;
