@@ -391,6 +391,20 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(14px,2.5vh,24px)",
             }}
           >
+            <div
+              data-reveal
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 13,
+                textTransform: "uppercase",
+                letterSpacing: ".18em",
+                color: "var(--muted)",
+                marginBottom: "clamp(12px,2vh,24px)",
+              }}
+            >
+              Work
+            </div>
+
             <div className="zk-work-scroll">
               {experienceEntries.map((job, i) => (
               <article
@@ -490,6 +504,20 @@ export const ZinKhantPortfolio = () => {
               scrollMarginTop: 24,
             }}
           >
+            <div
+              data-reveal
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 13,
+                textTransform: "uppercase",
+                letterSpacing: ".18em",
+                color: "var(--muted)",
+                marginBottom: "clamp(12px,2vh,24px)",
+              }}
+            >
+              Projects
+            </div>
+
             <div className="zk-work-scroll">
               {workEntries.map((entry) => (
                 <article
@@ -590,6 +618,19 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(18px,3.5vh,32px)",
             }}
           >
+            <div
+              data-reveal
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 13,
+                textTransform: "uppercase",
+                letterSpacing: ".18em",
+                color: "var(--muted)",
+              }}
+            >
+              Contact
+            </div>
+
             <a
               data-reveal
               href="mailto:khan4152@stthomas.edu"
