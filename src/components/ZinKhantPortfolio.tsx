@@ -79,11 +79,11 @@ const experienceEntries = [
     location: "Austin, TX",
     period: "June 2026 – Aug. 2026",
     details: [
-      "Owned local tracing for Workers from problem to launch — scoped an ambiguous observability gap, prototyped with engineers, and shipped automatic OpenTelemetry tracing in local dev so developers can debug without deploying.",
-      "Set an agent-first product direction: an API that lets AI coding agents query traces to find, fix, and verify bugs locally, positioning Workers for AI-assisted development.",
-      "Sourced and conducted 15+ customer research interviews with enterprise users including OpenAI and Contentful, turning findings into prioritized roadmap items.",
-      "Led design, build, and launch of a new Durable Objects UI with design and engineering, helping developers pinpoint and triage erroring actors faster.",
-      "Co-authored the launch blog post and docs, then iterated on shipped features using developer feedback from X.",
+      "Shipped automatic OpenTelemetry tracing in local dev so developers can debug Workers without deploying.",
+      "Set an agent-first direction: an API letting AI coding agents query traces to find and fix bugs locally.",
+      "Ran 15+ customer research interviews with enterprise users including OpenAI and Contentful.",
+      "Led design and launch of a new Durable Objects UI for faster error triage.",
+      "Co-authored the launch blog post and docs, iterating on developer feedback.",
     ],
   },
   {
@@ -92,8 +92,8 @@ const experienceEntries = [
     location: "Saint Paul, MN",
     period: "Dec 2024 – Feb 2025",
     details: [
-      "Acted as Technical PM for a team of 3 engineering interns, owning the roadmap and end-to-end delivery of a macOS MVP on schedule.",
-      "Analyzed user friction points to make a data-driven build decision, shipping a DeepGram API solution that saved users 10 hours of manual work per week.",
+      "Technical PM for 3 engineering interns, delivering a macOS MVP on schedule.",
+      "Shipped a DeepGram API integration that saved users 10 hours of manual work weekly.",
     ],
   },
   {
@@ -102,8 +102,8 @@ const experienceEntries = [
     location: "Saint Paul, MN",
     period: "Oct 2024 – Present",
     details: [
-      "Optimized developer experience by architecting reusable components, reducing feature implementation time by 60%.",
-      "Modernized infrastructure with CI/CD pipelines, cutting production deployment time from 1 hour to 15 minutes.",
+      "Built reusable components, cutting feature implementation time by 60%.",
+      "Added CI/CD pipelines, reducing production deploy time from 1 hour to 15 minutes.",
     ],
   },
   {
@@ -112,8 +112,8 @@ const experienceEntries = [
     location: "Saint Paul, MN",
     period: "June 2023 – Present",
     details: [
-      "Founded the university's first AI organization to close the curriculum gap in LLMs; grew a community of 50+ members.",
-      "Organized the campus's first 24-hour AI hackathon sponsored by Anthropic; managed $6k in prize distribution and logistics.",
+      "Founded the university's first AI organization, growing 50+ members.",
+      "Ran the campus's first 24-hour AI hackathon sponsored by Anthropic, managing $6k in prizes.",
     ],
   },
   {
@@ -122,7 +122,7 @@ const experienceEntries = [
     location: "Saint Paul, MN",
     period: "",
     details: [
-      "Serve on the university technical committee guiding campus-wide implementation of Aquinas AI.",
+      "Guide campus-wide implementation of Aquinas AI.",
     ],
   },
 ];
