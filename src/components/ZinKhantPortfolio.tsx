@@ -239,8 +239,6 @@ export const ZinKhantPortfolio = () => {
                 the things I build to connect people.
               </p>
             </div>
-            </div>
-
           </section>
 
           <section
