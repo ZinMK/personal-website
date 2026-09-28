@@ -443,7 +443,7 @@ export const ZinKhantPortfolio = () => {
                       {job.org}
                     </p>
                   </div>
-                  <span
+                  <div
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: 12,
@@ -451,10 +451,12 @@ export const ZinKhantPortfolio = () => {
                       letterSpacing: ".08em",
                       opacity: 0.5,
                       whiteSpace: "nowrap",
+                      textAlign: "right",
                     }}
                   >
-                    {job.period}
-                  </span>
+                    <div>{job.location}</div>
+                    {job.period && <div style={{ marginTop: 6 }}>{job.period}</div>}
+                  </div>
                 </div>
 
                 <details>
@@ -504,7 +506,7 @@ export const ZinKhantPortfolio = () => {
 
             <a
               data-reveal
-              href="/ZIN_2026_CLOUDFLARE.pdf"
+              href="/Zin_Khant_Resume_Google_APM.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="zk-hover-ink"
