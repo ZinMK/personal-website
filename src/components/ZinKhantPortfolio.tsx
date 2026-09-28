@@ -380,7 +380,25 @@ export const ZinKhantPortfolio = () => {
                         lineHeight: 1.05,
                       }}
                     >
-                      {entry.title}
+                      {entry.href ? (
+                        <a
+                          href={entry.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="zk-hover-ink"
+                          style={{
+                            color: "inherit",
+                            textDecoration: "underline",
+                            textDecorationThickness: "1px",
+                            textUnderlineOffset: "6px",
+                            textDecorationColor: "var(--line)",
+                          }}
+                        >
+                          {entry.title}
+                        </a>
+                      ) : (
+                        entry.title
+                      )}
                     </h3>
                   </div>
                   <span
@@ -408,46 +426,6 @@ export const ZinKhantPortfolio = () => {
                 >
                   {entry.description}
                 </p>
-
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-                  {entry.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 11,
-                        textTransform: "uppercase",
-                        letterSpacing: ".08em",
-                        padding: "5px 11px",
-                        border: "1px solid var(--line)",
-                        borderRadius: 100,
-                        opacity: 0.8,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {entry.href && (
-                    <a
-                      href={entry.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="zk-hover-opacity"
-                      style={{
-                        marginLeft: "auto",
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 12,
-                        textDecoration: "none",
-                        color: "inherit",
-                        borderBottom: "1px solid currentColor",
-                        paddingBottom: 2,
-                        opacity: 0.85,
-                      }}
-                    >
-                      Visit ↗
-                    </a>
-                  )}
-                </div>
 
                 <details>
                   <summary
