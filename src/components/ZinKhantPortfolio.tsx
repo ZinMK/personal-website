@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "@/styles/zin-khant.css";
 
-const BOOK_CALL_URL = "https://calendar.app.google/gjUdYkUXZkfrSSV47";
-
 const workEntries = [
   {
     num: "၀၁",
