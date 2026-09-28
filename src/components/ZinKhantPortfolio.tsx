@@ -396,7 +396,8 @@ export const ZinKhantPortfolio = () => {
               </span>
             </div>
 
-            {experienceEntries.map((job, i) => (
+            <div className="zk-work-scroll">
+              {experienceEntries.map((job, i) => (
               <article
                 key={`${job.title}-${job.org}`}
                 data-reveal
