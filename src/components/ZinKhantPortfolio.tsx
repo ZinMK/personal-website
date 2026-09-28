@@ -166,6 +166,16 @@ export const ZinKhantPortfolio = () => {
     <div id="zk-root" ref={rootRef} className="zk-page">
       <div className="zk-layout">
         <aside className="zk-sidebar">
+          <img
+            src="/images/profile-pic.jpg"
+            alt="Zin Khant"
+            style={{
+              width: "clamp(88px, 8vw, 120px)",
+              height: "clamp(88px, 8vw, 120px)",
+              borderRadius: "50%",
+              objectFit: "cover",
+            }}
+          />
           <nav aria-label="Site">
             {NAV_ITEMS.map((item) => (
               <a
@@ -209,7 +219,7 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(28px,5vh,56px)",
             }}
           >
-            <div data-reveal style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 24 }}>
+            <div data-reveal>
               <h1
                 style={{
                   margin: 0,
@@ -220,17 +230,6 @@ export const ZinKhantPortfolio = () => {
               >
                 Zin Khant
               </h1>
-              <img
-                src="/images/profile-pic.jpg"
-                alt="Zin Khant"
-                style={{
-                  width: "clamp(96px, 14vw, 150px)",
-                  height: "clamp(96px, 14vw, 150px)",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  flexShrink: 0,
-                }}
-              />
             </div>
 
             <div data-reveal style={{ maxWidth: "62ch" }}>
