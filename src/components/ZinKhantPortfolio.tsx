@@ -494,7 +494,8 @@ export const ZinKhantPortfolio = () => {
                 key={`${job.title}-${job.org}`}
                 data-reveal
                 style={{
-                  borderTop: "1px solid var(--line)",
+                  borderTop:
+                    i === 0 ? undefined : "1px solid var(--line)",
                   borderBottom:
                     i === experienceEntries.length - 2
                       ? "1px solid var(--line)"
