@@ -448,9 +448,31 @@ export const ZinKhantPortfolio = () => {
                         fontFamily: "var(--font-mono)",
                         fontSize: 13,
                         color: "var(--muted)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        flexWrap: "wrap",
                       }}
                     >
-                      {job.org}
+                      <span>{job.org}</span>
+                      {job.blog && (
+                        <>
+                          <span style={{ opacity: 0.4 }}>|</span>
+                          <a
+                            href={job.blog}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              color: "#ff5500",
+                              textDecoration: "none",
+                              borderBottom: "1px solid currentColor",
+                              paddingBottom: 1,
+                            }}
+                          >
+                            Read Blog
+                          </a>
+                        </>
+                      )}
                     </p>
                   </div>
                   <div
@@ -468,29 +490,6 @@ export const ZinKhantPortfolio = () => {
                     {job.period && <div style={{ marginTop: 6 }}>{job.period}</div>}
                   </div>
                 </div>
-
-                {job.blog && (
-                  <a
-                    href={job.blog}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="zk-hover-ink"
-                    style={{
-                      alignSelf: "flex-start",
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: ".08em",
-                      color: "inherit",
-                      textDecoration: "none",
-                      border: "1px solid var(--line)",
-                      borderRadius: 100,
-                      padding: "7px 16px",
-                    }}
-                  >
-                    Read Blog ↗
-                  </a>
-                )}
               </article>
               ))}
             </div>
