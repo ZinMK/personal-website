@@ -163,6 +163,7 @@ const MailIcon = () => (
 
 export const ZinKhantPortfolio = () => {
   const rootRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState("home");
   useTextScramble(rootRef);
 
@@ -275,7 +276,7 @@ export const ZinKhantPortfolio = () => {
           </div>
         </aside>
 
-        <main className="zk-content">
+        <main className="zk-content" ref={mainRef}>
           <>
           <section
             id="home"
@@ -687,7 +688,7 @@ export const ZinKhantPortfolio = () => {
         </main>
       </div>
 
-      <SandScroll />
+      <SandScroll targetRef={mainRef} />
     </div>
   );
 };
