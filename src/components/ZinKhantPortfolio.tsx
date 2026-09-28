@@ -287,21 +287,6 @@ export const ZinKhantPortfolio = () => {
               </div>
             </div>
 
-            <div id="contact" className="zk-current-work zk-current-work-hero">
-              <div className="zk-current-work-label">
-                <span className="zk-current-work-dot" aria-hidden="true" />
-                <span>What I&apos;m working on right now</span>
-              </div>
-              <p>{CURRENT_WORK_TEXT}</p>
-              <a
-                href={BOOK_CALL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="zk-hover-opacity zk-current-work-cta"
-              >
-                Book a call with me ↗
-              </a>
-            </div>
           </section>
 
           <section
