@@ -236,6 +236,28 @@ html {
   max-width: calc(240px + 780px);
 }
 
+/* Self-scrolling work list */
+.zk-work-scroll {
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(242, 241, 237, 0.25) transparent;
+  padding-right: 12px;
+}
+
+.zk-work-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.zk-work-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.zk-work-scroll::-webkit-scrollbar-thumb {
+  background: rgba(242, 241, 237, 0.25);
+  border-radius: 3px;
+}
+
 @media (max-width: 900px) {
   .zk-layout {
     flex-direction: column;
