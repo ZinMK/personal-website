@@ -610,7 +610,7 @@ export const ZinKhantPortfolio = () => {
                 </p>
               </article>
               ))}
-            </DecryptReveal>
+            </div>
           </section>
 
           <section
