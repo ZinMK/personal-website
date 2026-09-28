@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+=<>/\\";
 
 function scrambleIn(el: HTMLElement, duration = 700) {
