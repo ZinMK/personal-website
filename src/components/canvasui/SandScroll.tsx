@@ -61,8 +61,7 @@ export function SandScroll({
       seedGrains();
     };
 
-    const seedGrains() = 0;
-    function seedGrains() {
+    const seedGrains = () => {
       const area = w * BAND;
       const count = Math.min(Math.round(area / 2600), 1400);
       grains = [];
