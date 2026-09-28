@@ -328,44 +328,74 @@ export const ZinKhantPortfolio = () => {
             }}
           >
             <div data-reveal>
-              <span
+              <h2
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: ".18em",
-                  color: "var(--muted)",
+                  margin: 0,
+                  ...displayStyle,
+                  fontSize: "clamp(36px,6vw,72px)",
+                  lineHeight: 1,
                 }}
               >
-                Index — Work
-              </span>
+                Work Experience
+              </h2>
+              <div style={{ height: 1, background: "var(--line)", marginTop: "clamp(16px,3vh,28px)" }} />
             </div>
 
-            <h2
-              data-reveal
-              style={{
-                margin: 0,
-                ...displayStyle,
-                fontSize: "clamp(36px,6vw,72px)",
-                lineHeight: 1,
-              }}
-            >
-              résumé
-            </h2>
-
-            <p
-              data-reveal
-              style={{
-                margin: 0,
-                fontSize: "clamp(15px,1.7vw,19px)",
-                lineHeight: 1.55,
-                maxWidth: "60ch",
-                opacity: 0.72,
-              }}
-            >
-              Product Manager Intern at Cloudflare · Founder, Nexus AI Club · BS at
-              University of St. Thomas.
-            </p>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              {experienceEntries.map((job) => (
+                <div
+                  key={`${job.title}-${job.company}`}
+                  data-reveal
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "clamp(8px,2vw,32px)",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    padding: "clamp(20px,3vh,32px) 0",
+                    borderBottom: "1px solid var(--line)",
+                  }}
+                >
+                  <div>
+                    <h3
+                      style={{
+                        margin: 0,
+                        ...displayStyle,
+                        fontSize: "clamp(20px,2.6vw,30px)",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {job.title}
+                    </h3>
+                    <p
+                      style={{
+                        margin: "8px 0 0",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 13,
+                        color: "var(--muted)",
+                      }}
+                    >
+                      {job.company}
+                    </p>
+                  </div>
+                  <div style={{ textAlign: "right", marginLeft: "auto" }}>
+                    <div style={{ fontSize: "clamp(14px,1.6vw,18px)" }}>
+                      {job.location}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 6,
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 12,
+                        color: "var(--muted)",
+                      }}
+                    >
+                      {job.period}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
 
             <a
               data-reveal
@@ -376,16 +406,17 @@ export const ZinKhantPortfolio = () => {
               style={{
                 alignSelf: "flex-start",
                 fontFamily: "var(--font-mono)",
-                fontSize: 14,
+                fontSize: 13,
                 textTransform: "uppercase",
                 letterSpacing: ".08em",
                 color: "inherit",
                 textDecoration: "none",
                 borderBottom: "1px solid currentColor",
                 paddingBottom: 3,
+                opacity: 0.75,
               }}
             >
-              View résumé PDF ↗
+              Full résumé PDF ↗
             </a>
           </section>
 
