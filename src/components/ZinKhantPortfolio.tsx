@@ -74,8 +74,8 @@ const workEntries = [
 
 const experienceEntries = [
   {
-    title: "Product Manager Intern, Workers Observability",
-    org: "Cloudflare",
+    title: "Product Manager Intern",
+    org: "Cloudflare, Workers Observability",
     location: "Austin, TX",
     period: "June 2026 – Aug. 2026",
     details: [
@@ -459,48 +459,30 @@ export const ZinKhantPortfolio = () => {
                   </div>
                 </div>
 
-                <details>
-                  <summary
-                    className="zk-hover-opacity"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: ".1em",
-                      opacity: 0.65,
-                      width: "max-content",
-                    }}
-                  >
-                    <span data-closed-label>Read more ↓</span>
-                    <span data-open-label>Show less ↑</span>
-                  </summary>
-                  <div
-                    data-detail
-                    style={{
-                      paddingTop: 16,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 11,
-                      maxWidth: "62ch",
-                    }}
-                  >
-                    {job.details.map((detail) => (
-                      <div
-                        key={detail}
-                        style={{
-                          display: "flex",
-                          gap: 12,
-                          fontSize: "clamp(14px,1.6vw,17px)",
-                          lineHeight: 1.5,
-                          opacity: 0.72,
-                        }}
-                      >
-                        <span style={{ opacity: 0.45 }}>—</span>
-                        <span>{detail}</span>
-                      </div>
-                    ))}
-                  </div>
-                </details>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 11,
+                    maxWidth: "62ch",
+                  }}
+                >
+                  {job.details.map((detail) => (
+                    <div
+                      key={detail}
+                      style={{
+                        display: "flex",
+                        gap: 12,
+                        fontSize: "clamp(14px,1.6vw,17px)",
+                        lineHeight: 1.5,
+                        opacity: 0.72,
+                      }}
+                    >
+                      <span style={{ opacity: 0.45 }}>—</span>
+                      <span>{detail}</span>
+                    </div>
+                  ))}
+                </div>
               </article>
             ))}
 
