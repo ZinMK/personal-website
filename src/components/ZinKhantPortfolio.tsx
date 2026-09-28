@@ -458,31 +458,6 @@ export const ZinKhantPortfolio = () => {
                     {job.period && <div style={{ marginTop: 6 }}>{job.period}</div>}
                   </div>
                 </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 11,
-                    maxWidth: "62ch",
-                  }}
-                >
-                  {job.details.map((detail) => (
-                    <div
-                      key={detail}
-                      style={{
-                        display: "flex",
-                        gap: 12,
-                        fontSize: "clamp(14px,1.6vw,17px)",
-                        lineHeight: 1.5,
-                        opacity: 0.72,
-                      }}
-                    >
-                      <span style={{ opacity: 0.45 }}>—</span>
-                      <span>{detail}</span>
-                    </div>
-                  ))}
-                </div>
               </article>
             ))}
 
