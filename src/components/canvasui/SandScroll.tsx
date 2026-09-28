@@ -81,8 +81,8 @@ export function SandScroll({
     }
 
     const setMask = (line: number) => {
-      const top = line - smooth - BAND * 0.5;
-      const bottom = line + smooth > 0 ? line + BAND * 0.5 - smooth : top + BAND;
+      const top = line - BAND * 0.5;
+      const bottom = line + BAND * 0.5;
       const g = `linear-gradient(to bottom, #000 ${top}px, transparent ${bottom}px)`;
       target.style.setProperty("-webkit-mask-image", g);
       target.style.setProperty("mask-image", g);
