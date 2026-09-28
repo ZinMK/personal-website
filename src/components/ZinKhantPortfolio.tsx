@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import "@/styles/zin-khant.css";
-import { SandScroll } from "@/components/canvasui/SandScroll";
 import { useTextScramble } from "@/components/canvasui/TextScramble";
 
 const workEntries = [
@@ -163,7 +162,6 @@ const MailIcon = () => (
 
 export const ZinKhantPortfolio = () => {
   const rootRef = useRef<HTMLDivElement>(null);
-  const mainRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState("home");
   useTextScramble(rootRef);
 
@@ -276,7 +274,7 @@ export const ZinKhantPortfolio = () => {
           </div>
         </aside>
 
-        <main className="zk-content" ref={mainRef}>
+        <main className="zk-content">
           <>
           <section
             id="home"
@@ -687,8 +685,6 @@ export const ZinKhantPortfolio = () => {
           </>
         </main>
       </div>
-
-      <SandScroll targetRef={mainRef} />
     </div>
   );
 };
