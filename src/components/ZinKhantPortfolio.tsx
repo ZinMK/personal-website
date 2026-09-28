@@ -386,9 +386,6 @@ export const ZinKhantPortfolio = () => {
               padding:
                 "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
               scrollMarginTop: 24,
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(14px,2.5vh,24px)",
             }}
           >
             <div
