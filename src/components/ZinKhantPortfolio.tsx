@@ -213,12 +213,6 @@ export const ZinKhantPortfolio = () => {
             }}
           >
             <div data-reveal>
-              <span style={{ fontFamily: "var(--font-my)", lineHeight: 1 }}>
-                မင်္ဂလာပါ/Welcome
-              </span>
-            </div>
-
-            <div data-reveal>
               <h1
                 style={{
                   margin: 0,
@@ -229,33 +223,12 @@ export const ZinKhantPortfolio = () => {
               >
                 Zin Khant
               </h1>
-              <p
-                style={{
-                  margin: "10px 0 0",
-                  fontFamily: "var(--font-my)",
-                  fontSize: "clamp(16px, 2vw, 22px)",
-                  opacity: 0.5,
-                  lineHeight: 1.2,
-                }}
-              >
-                ဇင်မင်းခန့်
-              </p>
             </div>
 
             <div data-reveal style={{ maxWidth: "62ch" }}>
-              <h2
-                style={{
-                  margin: 0,
-                  ...displayStyle,
-                  fontSize: "clamp(26px,3.5vw,38px)",
-                  lineHeight: 1.04,
-                }}
-              >
-                I like building.
-              </h2>
               <p
                 style={{
-                  margin: "16px 0 0",
+                  margin: 0,
                   fontSize: "clamp(16px,1.8vw,20px)",
                   lineHeight: 1.6,
                   opacity: 0.8,
@@ -265,24 +238,7 @@ export const ZinKhantPortfolio = () => {
                 philosophy, music, or AI. I make music and more than anything, I want
                 the things I build to connect people.
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 20 }}>
-                {["Building", "Meditation", "Philosophy", "Music", "AI"].map((tag) => (
-                  <span
-                    key={tag}
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: ".08em",
-                      padding: "7px 14px",
-                      border: "1px solid var(--line)",
-                      borderRadius: 100,
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            </div>
             </div>
 
           </section>
@@ -414,22 +370,10 @@ export const ZinKhantPortfolio = () => {
                     style={{
                       display: "flex",
                       alignItems: "baseline",
-                      gap: 16,
                       flex: 1,
                       minWidth: 240,
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 13,
-                        opacity: 0.4,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      <span style={{ fontFamily: "var(--font-my)" }}>{entry.num}</span> /{" "}
-                      {entry.numEn}
-                    </span>
                     <h3
                       style={{
                         margin: 0,
