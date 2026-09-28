@@ -52,12 +52,21 @@ const workEntries = [
   },
 ];
 
-const experienceEntries = [
+const experienceEntries: {
+  title: string;
+  org: string;
+  location: string;
+  period: string;
+  details: string[];
+  blog?: string;
+  last?: boolean;
+}[] = [
   {
     title: "Product Manager Intern",
     org: "Cloudflare, Workers Observability",
     location: "Austin, TX",
     period: "June 2026 – Aug. 2026",
+    blog: "https://blog.cloudflare.com/local-tracing/",
     details: [
       "Shipped automatic OpenTelemetry tracing in local dev so developers can debug Workers without deploying.",
       "Set an agent-first direction: an API letting AI coding agents query traces to find and fix bugs locally.",
@@ -342,35 +351,17 @@ export const ZinKhantPortfolio = () => {
             }}
           >
             <div data-reveal>
-              <a
-                href="https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="zk-hover-opacity-65"
+              <span
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                  textDecoration: "none",
-                  color: "inherit",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: ".16em",
+                  color: "var(--muted)",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    textTransform: "uppercase",
-                    letterSpacing: ".16em",
-                    color: "var(--muted)",
-                  }}
-                >
-                  CHECK OUT SOME OF MY TUNES
-                </span>
-                <span style={{ flex: 1, height: 1, background: "var(--line)" }} />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "clamp(16px,2vw,22px)" }}>
-                  Listen on Spotify ↗
-                </span>
-              </a>
+                My music
+              </span>
 
               <iframe
                 data-testid="embed-iframe"
@@ -400,41 +391,6 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(14px,2.5vh,24px)",
             }}
           >
-            <div
-              data-reveal
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 16,
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                marginBottom: "clamp(12px,2vh,24px)",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: ".18em",
-                  color: "var(--muted)",
-                }}
-              >
-                Index — Work
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: ".08em",
-                  opacity: 0.5,
-                }}
-              >
-                Four entries · 2023–2025
-              </span>
-            </div>
-
             <div className="zk-work-scroll">
               {experienceEntries.map((job, i) => (
               <article
@@ -511,41 +467,6 @@ export const ZinKhantPortfolio = () => {
               scrollMarginTop: 24,
             }}
           >
-            <div
-              data-reveal
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 16,
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                marginBottom: "clamp(12px,2vh,24px)",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: ".18em",
-                  color: "var(--muted)",
-                }}
-              >
-                Index — Projects
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: ".08em",
-                  opacity: 0.5,
-                }}
-              >
-                Five entries · 2024–2025
-              </span>
-            </div>
-
             <div className="zk-work-scroll">
               {workEntries.map((entry) => (
                 <article
@@ -646,32 +567,6 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(18px,3.5vh,32px)",
             }}
           >
-            <div data-reveal style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: ".18em",
-                  color: "var(--muted)",
-                }}
-              >
-                Index — Contact
-              </span>
-            </div>
-
-            <h2
-              data-reveal
-              style={{
-                margin: 0,
-                ...displayStyle,
-                fontSize: "clamp(36px,6vw,68px)",
-                lineHeight: 0.98,
-              }}
-            >
-              contact
-            </h2>
-
             <a
               data-reveal
               href="mailto:khan4152@stthomas.edu"
