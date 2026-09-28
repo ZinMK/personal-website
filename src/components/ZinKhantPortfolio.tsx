@@ -82,6 +82,7 @@ const displayStyle = {
 const NAV_ITEMS = [
   { id: "home", label: "home" },
   { id: "work", label: "work" },
+  { id: "projects", label: "projects" },
   { id: "reach", label: "contact" },
 ];
 
@@ -166,16 +167,6 @@ export const ZinKhantPortfolio = () => {
     <div id="zk-root" ref={rootRef} className="zk-page">
       <div className="zk-layout">
         <aside className="zk-sidebar">
-          <img
-            src="/images/profile-pic.jpg"
-            alt="Zin Khant"
-            style={{
-              width: "clamp(88px, 8vw, 120px)",
-              height: "clamp(88px, 8vw, 120px)",
-              borderRadius: "50%",
-              objectFit: "cover",
-            }}
-          />
           <nav aria-label="Site">
             {NAV_ITEMS.map((item) => (
               <a
@@ -310,6 +301,79 @@ export const ZinKhantPortfolio = () => {
               padding:
                 "clamp(56px,9vh,112px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
               scrollMarginTop: 24,
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(20px,4vh,36px)",
+            }}
+          >
+            <div data-reveal>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  letterSpacing: ".18em",
+                  color: "var(--muted)",
+                }}
+              >
+                Index — Work
+              </span>
+            </div>
+
+            <h2
+              data-reveal
+              style={{
+                margin: 0,
+                ...displayStyle,
+                fontSize: "clamp(36px,6vw,72px)",
+                lineHeight: 1,
+              }}
+            >
+              résumé
+            </h2>
+
+            <p
+              data-reveal
+              style={{
+                margin: 0,
+                fontSize: "clamp(15px,1.7vw,19px)",
+                lineHeight: 1.55,
+                maxWidth: "60ch",
+                opacity: 0.72,
+              }}
+            >
+              Product Manager Intern at Cloudflare · Founder, Nexus AI Club · BS at
+              University of St. Thomas.
+            </p>
+
+            <a
+              data-reveal
+              href="/ZIN_2026_CLOUDFLARE.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="zk-hover-ink"
+              style={{
+                alignSelf: "flex-start",
+                fontFamily: "var(--font-mono)",
+                fontSize: 14,
+                textTransform: "uppercase",
+                letterSpacing: ".08em",
+                color: "inherit",
+                textDecoration: "none",
+                borderBottom: "1px solid currentColor",
+                paddingBottom: 3,
+              }}
+            >
+              View résumé PDF ↗
+            </a>
+          </section>
+
+          <section
+            id="projects"
+            style={{
+              padding:
+                "clamp(56px,9vh,112px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
+              scrollMarginTop: 24,
             }}
           >
             <div
@@ -332,7 +396,7 @@ export const ZinKhantPortfolio = () => {
                   color: "var(--muted)",
                 }}
               >
-                Index — Work
+                Index — Projects
               </span>
               <span
                 style={{
