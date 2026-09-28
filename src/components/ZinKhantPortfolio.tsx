@@ -72,6 +72,27 @@ const workEntries = [
   },
 ];
 
+const experienceEntries = [
+  {
+    title: "Product Manager Intern",
+    company: "Cloudflare",
+    location: "San Francisco",
+    period: "Summer 2026",
+  },
+  {
+    title: "Software Engineering Intern",
+    company: "Travelers Insurance",
+    location: "Minneapolis",
+    period: "Summer 2025",
+  },
+  {
+    title: "Software Engineering Intern",
+    company: "SASSA",
+    location: "Minneapolis",
+    period: "2024",
+  },
+];
+
 const displayStyle = {
   fontFamily: "var(--font-display)",
   fontWeight: "var(--display-weight)" as const,
