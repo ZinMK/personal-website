@@ -284,6 +284,11 @@ html {
     margin-left: 0;
     max-width: 100%;
   }
+
+  .zk-work-scroll {
+    max-height: none;
+    padding-right: 0;
+  }
 }
 
 .zk-hover-opacity {
