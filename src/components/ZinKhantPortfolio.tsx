@@ -268,10 +268,10 @@ export const ZinKhantPortfolio = () => {
             id="home"
             style={{
               padding:
-                "clamp(48px,10vh,110px) clamp(24px,5vw,64px) clamp(40px,7vh,80px)",
+                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(28px,4vh,48px)",
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(28px,5vh,56px)",
+              gap: "clamp(16px,3vh,28px)",
             }}
           >
             <div data-reveal>
@@ -337,7 +337,7 @@ export const ZinKhantPortfolio = () => {
             id="about"
             style={{
               padding:
-                "clamp(32px,5vh,56px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
+                "clamp(24px,4vh,40px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
               scrollMarginTop: 24,
             }}
           >
@@ -393,11 +393,11 @@ export const ZinKhantPortfolio = () => {
             id="work"
             style={{
               padding:
-                "clamp(56px,9vh,112px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
+                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
               scrollMarginTop: 24,
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(20px,4vh,36px)",
+              gap: "clamp(14px,2.5vh,24px)",
             }}
           >
             <div
@@ -408,7 +408,7 @@ export const ZinKhantPortfolio = () => {
                 gap: 16,
                 alignItems: "baseline",
                 justifyContent: "space-between",
-                marginBottom: "clamp(20px,4vh,44px)",
+                marginBottom: "clamp(12px,2vh,24px)",
               }}
             >
               <span
@@ -446,7 +446,7 @@ export const ZinKhantPortfolio = () => {
                     i === experienceEntries.length - 1
                       ? "1px solid var(--line)"
                       : undefined,
-                  padding: "clamp(26px,4vw,46px) 0",
+                  padding: "clamp(20px,3vw,32px) 0",
                   display: "flex",
                   flexDirection: "column",
                   gap: 12,
@@ -507,7 +507,7 @@ export const ZinKhantPortfolio = () => {
             id="projects"
             style={{
               padding:
-                "clamp(56px,9vh,112px) clamp(24px,5vw,64px) clamp(40px,6vh,72px)",
+                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
               scrollMarginTop: 24,
             }}
           >
@@ -519,7 +519,7 @@ export const ZinKhantPortfolio = () => {
                 gap: 16,
                 alignItems: "baseline",
                 justifyContent: "space-between",
-                marginBottom: "clamp(20px,4vh,44px)",
+                marginBottom: "clamp(12px,2vh,24px)",
               }}
             >
               <span
@@ -554,7 +554,7 @@ export const ZinKhantPortfolio = () => {
                 style={{
                   borderTop: "1px solid var(--line)",
                   borderBottom: entry.last ? "1px solid var(--line)" : undefined,
-                  padding: "clamp(26px,4vw,46px) 0",
+                  padding: "clamp(20px,3vw,32px) 0",
                   display: "flex",
                   flexDirection: "column",
                   gap: 16,
@@ -639,11 +639,11 @@ export const ZinKhantPortfolio = () => {
           <section
             id="reach"
             style={{
-              padding: "clamp(72px,12vh,150px) clamp(24px,5vw,64px)",
+              padding: "clamp(40px,7vh,88px) clamp(24px,5vw,64px)",
               scrollMarginTop: 24,
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(28px,5vh,52px)",
+              gap: "clamp(18px,3.5vh,32px)",
             }}
           >
             <div data-reveal style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
@@ -741,7 +741,7 @@ export const ZinKhantPortfolio = () => {
               gap: 16,
               alignItems: "center",
               justifyContent: "space-between",
-              padding: "clamp(28px,4vh,48px) clamp(24px,5vw,64px)",
+              padding: "clamp(20px,3vh,32px) clamp(24px,5vw,64px)",
               borderTop: "1px solid var(--line)",
               fontFamily: "var(--font-mono)",
               fontSize: 12,
