@@ -239,6 +239,7 @@ export const ZinKhantPortfolio = () => {
                   margin: "10px 0 0",
                   fontFamily: "var(--font-my)",
                   fontSize: "clamp(16px, 2vw, 22px)",
+                  opacity: 0.5,
                   lineHeight: 1.2,
                 }}
               >
