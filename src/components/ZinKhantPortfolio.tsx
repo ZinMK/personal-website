@@ -509,8 +509,9 @@ export const ZinKhantPortfolio = () => {
               </span>
             </div>
 
-            {workEntries.map((entry) => (
-              <article
+            <div className="zk-work-scroll">
+              {workEntries.map((entry) => (
+                <article
                 key={entry.title}
                 data-reveal
                 style={{
@@ -594,7 +595,8 @@ export const ZinKhantPortfolio = () => {
                   {entry.description}
                 </p>
               </article>
-            ))}
+              ))}
+            </div>
           </section>
 
           <section
