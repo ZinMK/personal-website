@@ -25,7 +25,7 @@ export function createRectCache(el: HTMLElement): RectCache {
     },
     destroy() {
       if (raf) cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", schedule, true as EventListenerOptions);
+      window.removeEventListener("scroll", schedule, true);
       window.removeEventListener("resize", schedule);
     },
   };
