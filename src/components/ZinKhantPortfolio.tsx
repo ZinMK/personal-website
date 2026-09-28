@@ -274,8 +274,8 @@ export const ZinKhantPortfolio = () => {
           </div>
         </aside>
 
-        <main className="zk-content" style={{ height: "100vh", overflow: "hidden" }}>
-          <ParticleScroll style={{ height: "100%" }}>
+        <main className="zk-content">
+          <>
           <section
             id="home"
             style={{
