@@ -348,18 +348,39 @@ export const ZinKhantPortfolio = () => {
               gap: "clamp(20px,4vh,36px)",
             }}
           >
-            <div data-reveal>
-              <h2
+            <div
+              data-reveal
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 16,
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                marginBottom: "clamp(20px,4vh,44px)",
+              }}
+            >
+              <span
                 style={{
-                  margin: 0,
-                  ...displayStyle,
-                  fontSize: "clamp(36px,6vw,72px)",
-                  lineHeight: 1,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  letterSpacing: ".18em",
+                  color: "var(--muted)",
                 }}
               >
-                Work Experience
-              </h2>
-              <div style={{ height: 1, background: "var(--line)", marginTop: "clamp(16px,3vh,28px)" }} />
+                Index — Work
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12,
+                  textTransform: "uppercase",
+                  letterSpacing: ".08em",
+                  opacity: 0.5,
+                }}
+              >
+                Four entries · 2023–2025
+              </span>
             </div>
 
             {experienceEntries.map((job, i) => (
