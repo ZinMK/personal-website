@@ -321,7 +321,7 @@ export const ZinKhantPortfolio = () => {
                 style={{
                   margin: 0,
                   ...displayStyle,
-                  fontSize: "clamp(40px, 6vw, 68px)",
+                  fontSize: "clamp(32px, 4.5vw, 52px)",
                   lineHeight: 0.95,
                 }}
               >
@@ -474,7 +474,7 @@ export const ZinKhantPortfolio = () => {
                       style={{
                         margin: 0,
                         ...displayStyle,
-                        fontSize: "clamp(24px,3.2vw,36px)",
+                        fontSize: "clamp(20px,2.4vw,27px)",
                         lineHeight: 1.05,
                       }}
                     >
@@ -593,7 +593,7 @@ export const ZinKhantPortfolio = () => {
                       style={{
                         margin: 0,
                         ...displayStyle,
-                        fontSize: "clamp(24px,3.2vw,36px)",
+                        fontSize: "clamp(20px,2.4vw,27px)",
                         lineHeight: 1.05,
                       }}
                     >
@@ -701,7 +701,7 @@ export const ZinKhantPortfolio = () => {
                         style={{
                           margin: 0,
                           ...displayStyle,
-                          fontSize: "clamp(24px,3.2vw,36px)",
+                          fontSize: "clamp(20px,2.4vw,27px)",
                           lineHeight: 1.05,
                         }}
                       >
