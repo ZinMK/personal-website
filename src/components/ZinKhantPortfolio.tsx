@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import "@/styles/zin-khant.css";
 import { useTextScramble } from "@/components/canvasui/TextScramble";
 
