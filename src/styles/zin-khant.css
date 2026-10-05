@@ -172,18 +172,9 @@ html {
   left: 0;
   bottom: 0;
   width: 240px;
-  padding: clamp(48px, 12vh, 120px) 20px 40px 40px;
+  padding: 40px 20px 40px 40px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-}
-
-.zk-sidebar-name {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--ink);
-  text-decoration: none;
-  line-height: 1.1;
 }
 
 .zk-sidebar nav {
@@ -191,27 +182,7 @@ html {
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-}
-
-.zk-side-link {
-  font-family: var(--font-display);
-  font-size: 26px;
-  line-height: 1.2;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 4px 14px;
-  margin-left: -14px;
-  border-radius: 10px;
-  transition: color 0.25s ease, background 0.25s ease;
-}
-
-.zk-side-link:hover {
-  color: var(--ink);
-}
-
-.zk-side-link[data-active] {
-  color: var(--ink);
-  background: var(--nav-active-bg);
+  margin: auto 0; /* center nav vertically */
 }
 
 .zk-side-status {
@@ -221,6 +192,7 @@ html {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--muted);
+  margin-top: auto; /* pin status to the bottom */
 }
 
 .zk-side-status .zk-status-row {
@@ -267,17 +239,21 @@ html {
     position: static;
     width: 100%;
     padding: 28px 20px 8px;
-    gap: 16px;
   }
 
   .zk-sidebar nav {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 4px;
+    margin: 0 0 16px; /* top bar on mobile */
   }
 
   .zk-side-link {
     font-size: 20px;
+  }
+
+  .zk-side-status {
+    margin-top: 0;
   }
 
   .zk-content {
