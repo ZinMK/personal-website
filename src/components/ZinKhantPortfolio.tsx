@@ -380,39 +380,41 @@ export const ZinKhantPortfolio = () => {
             id="about"
             style={{
               padding:
-                "clamp(24px,4vh,40px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
+                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
               scrollMarginTop: 24,
             }}
           >
-            <div data-reveal>
-              <span
-                data-scramble
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 11,
-                  textTransform: "uppercase",
-                  letterSpacing: ".16em",
-                  color: "var(--muted)",
-                }}
-              >
-                My music
-              </span>
-
-              <iframe
-                data-testid="embed-iframe"
-                title="Zin Khant on Spotify"
-                style={{
-                  borderRadius: 12,
-                  width: "100%",
-                  height: 352,
-                  display: "block",
-                  marginTop: 20,
-                }}
-                src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0&si=eaf0addcfa9948db"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
+            <div
+              data-reveal
+              data-scramble
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 13,
+                textTransform: "uppercase",
+                letterSpacing: ".18em",
+                color: "var(--muted)",
+                marginBottom: 12,
+              }}
+            >
+              My music
             </div>
+
+            <div style={{ borderTop: "1px solid var(--line)" }} />
+
+            <iframe
+              data-testid="embed-iframe"
+              title="Zin Khant on Spotify"
+              style={{
+                borderRadius: 12,
+                width: "100%",
+                height: 352,
+                display: "block",
+                marginTop: "clamp(16px,2.5vw,24px)",
+              }}
+              src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0&si=eaf0addcfa9948db"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
           </section>
 
           <section
@@ -647,13 +649,11 @@ export const ZinKhantPortfolio = () => {
           </section>
 
           <section
-            id="reach"
+            id="writings"
             style={{
-              padding: "clamp(40px,7vh,88px) clamp(24px,5vw,64px)",
+              padding:
+                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
               scrollMarginTop: 24,
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(18px,3.5vh,32px)",
             }}
           >
             <div
@@ -665,21 +665,133 @@ export const ZinKhantPortfolio = () => {
                 textTransform: "uppercase",
                 letterSpacing: ".18em",
                 color: "var(--muted)",
+                marginBottom: 12,
+              }}
+            >
+              Writings
+            </div>
+
+            <div style={{ borderTop: "1px solid var(--line)" }} />
+
+            <div className="zk-work-scroll">
+              {writingEntries.map((post, i) => (
+                <article
+                  key={post.title}
+                  data-reveal
+                  style={{
+                    borderTop: i === 0 ? undefined : "1px solid var(--line)",
+                    borderBottom: post.last ? "1px solid var(--line)" : undefined,
+                    padding: "clamp(16px,2.5vw,24px) 0",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 16,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "clamp(12px,3vw,36px)",
+                      alignItems: "baseline",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div style={{ flex: 1, minWidth: 240 }}>
+                      <h3
+                        style={{
+                          margin: 0,
+                          ...displayStyle,
+                          fontSize: "clamp(24px,3.2vw,36px)",
+                          lineHeight: 1.05,
+                        }}
+                      >
+                        {post.href ? (
+                          <a
+                            href={post.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="zk-hover-ink"
+                            style={{
+                              color: "inherit",
+                              textDecoration: "underline",
+                              textDecorationThickness: "1px",
+                              textUnderlineOffset: "6px",
+                              textDecorationColor: "var(--line)",
+                            }}
+                          >
+                            {post.title}
+                          </a>
+                        ) : (
+                          post.title
+                        )}
+                      </h3>
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 12,
+                        textTransform: "uppercase",
+                        letterSpacing: ".08em",
+                        opacity: 0.5,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {post.date}
+                    </span>
+                  </div>
+
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "clamp(15px,1.7vw,19px)",
+                      lineHeight: 1.55,
+                      maxWidth: "60ch",
+                      opacity: 0.72,
+                    }}
+                  >
+                    {post.blurb}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section
+            id="reach"
+            style={{
+              padding:
+                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
+              scrollMarginTop: 24,
+            }}
+          >
+            <div
+              data-reveal
+              data-scramble
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 13,
+                textTransform: "uppercase",
+                letterSpacing: ".18em",
+                color: "var(--muted)",
+                marginBottom: 12,
               }}
             >
               Contact
             </div>
 
+            <div style={{ borderTop: "1px solid var(--line)" }} />
+
             <a
               data-reveal
               href="mailto:khan4152@stthomas.edu"
               style={{
+                display: "inline-block",
+                marginTop: "clamp(16px,2.5vw,24px)",
                 fontFamily: "var(--font-body)",
                 fontSize: "clamp(18px,2.6vw,26px)",
                 color: "inherit",
                 borderBottom: "2px solid currentColor",
                 paddingBottom: 4,
-                alignSelf: "flex-start",
                 textDecoration: "none",
               }}
             >
