@@ -147,9 +147,9 @@ const writingEntries: {
 
 const displayStyle = {
   fontFamily: "var(--font-display)",
-  fontWeight: "var(--display-weight)" as const,
+  fontWeight: "var(--display-weight)",
   letterSpacing: "var(--display-spacing)",
-  textTransform: "var(--display-transform)" as const,
+  textTransform: "var(--display-transform)",
 };
 
 const NAV_ITEMS = [
