@@ -150,7 +150,7 @@ const displayStyle = {
   fontWeight: "var(--display-weight)",
   letterSpacing: "var(--display-spacing)",
   textTransform: "var(--display-transform)",
-} as CSSProperties;
+} as unknown as CSSProperties;
 
 const NAV_ITEMS = [
   { id: "home", label: "home" },
