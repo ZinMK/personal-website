@@ -185,6 +185,27 @@ html {
   margin: auto 0; /* center nav vertically */
 }
 
+.zk-side-link {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 4px 14px;
+  margin-left: -14px;
+  border-radius: 10px;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.zk-side-link:hover {
+  color: var(--ink);
+}
+
+.zk-side-link[data-active] {
+  color: var(--ink);
+  background: var(--nav-active-bg);
+}
+
 .zk-side-status {
   display: flex;
   flex-direction: column;
