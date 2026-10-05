@@ -440,7 +440,7 @@ export const ZinKhantPortfolio = () => {
               Work
             </div>
 
-            <div style={{ borderTop: "1px solid var(--line)" }} />
+            <div style={{ borderTop: "1px solid var(--ink)", width: 32 }} />
 
             <div className="zk-work-scroll">
               {experienceEntries.map((job, i) => (
@@ -448,8 +448,7 @@ export const ZinKhantPortfolio = () => {
                 key={`${job.title}-${job.org}`}
                 data-reveal
                 style={{
-                  borderTop:
-                    i === 0 ? undefined : "1px solid var(--line)",
+                  borderTop: "1px solid var(--line)",
                   borderBottom:
                     i === experienceEntries.length - 1
                       ? "1px solid var(--line)"
@@ -556,7 +555,7 @@ export const ZinKhantPortfolio = () => {
               Projects
             </div>
 
-            <div style={{ borderTop: "1px solid var(--line)" }} />
+            <div style={{ borderTop: "1px solid var(--ink)", width: 32 }} />
 
             <div className="zk-work-scroll">
               {workEntries.map((entry, i) => (
@@ -564,7 +563,7 @@ export const ZinKhantPortfolio = () => {
                 key={entry.title}
                 data-reveal
                 style={{
-                  borderTop: i === 0 ? undefined : "1px solid var(--line)",
+                  borderTop: "1px solid var(--line)",
                   borderBottom: entry.last ? "1px solid var(--line)" : undefined,
                   padding: "clamp(16px,2.5vw,24px) 0",
                   display: "flex",
