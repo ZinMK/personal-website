@@ -117,34 +117,6 @@ const experienceEntries: {
   },
 ];
 
-const writingEntries: {
-  title: string;
-  blurb: string;
-  date: string;
-  href?: string;
-  last?: boolean;
-}[] = [
-  {
-    title: "Notes on Stillness",
-    blurb:
-      "Field notes from a daily meditation practice — what attention actually feels like, and why boredom is the doorway.",
-    date: "2025",
-  },
-  {
-    title: "Why I Build",
-    blurb:
-      "On seeing problems worth fixing, shipping small, and building things that connect people instead of consuming them.",
-    date: "2025",
-  },
-  {
-    title: "Agents and Attention",
-    blurb:
-      "What AI agents get wrong about focus, and what a meditation practice taught me about designing for it.",
-    date: "2024",
-    last: true,
-  },
-];
-
 const displayStyle = {
   fontFamily: "var(--font-display)",
   fontWeight: "var(--display-weight)",
@@ -156,7 +128,6 @@ const NAV_ITEMS = [
   { id: "home", label: "home" },
   { id: "work", label: "work" },
   { id: "projects", label: "projects" },
-  { id: "writings", label: "writings" },
   { id: "reach", label: "contact" },
 ];
 
