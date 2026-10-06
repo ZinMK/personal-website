@@ -327,7 +327,8 @@ html {
 .zk-laptop-lid {
   position: relative;
   transform-origin: bottom center;
-  transform: rotateX(-90deg);
+  /* closes by tipping toward the viewer, so the lid back faces up */
+  transform: rotateX(90deg);
   transition: transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
   background: linear-gradient(180deg, #1c1c1b, #0e0e0d);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -335,11 +336,40 @@ html {
   border-radius: 14px 14px 0 0;
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
   transform-style: preserve-3d;
-  backface-visibility: hidden;
 }
 
 .zk-laptop.is-open .zk-laptop-lid {
   transform: rotateX(-8deg);
+}
+
+.zk-laptop-lidback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(180deg, #1c1c1b, #0e0e0d);
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.zk-laptop-mark {
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 1;
+  color: rgba(242, 241, 237, 0.55);
+}
+
+.zk-laptop-brand {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(242, 241, 237, 0.35);
 }
 
 .zk-laptop-camera {
@@ -396,12 +426,47 @@ html {
   position: relative;
   width: 104%;
   margin-left: -2%;
-  height: 18px;
+  height: 22px;
   margin-top: -1px;
   background: linear-gradient(180deg, #3a3a38, #262624);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0 0 16px 16px;
   box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.6);
+}
+
+.zk-laptop-keys {
+  position: absolute;
+  top: 5px;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(242, 241, 237, 0.16) 0 9px,
+    transparent 9px 15px
+  );
+}
+
+.zk-laptop-trackpad {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24%;
+  height: 7px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.zk-laptop-monogram {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(242, 241, 237, 0.3);
 }
 
 .zk-laptop-notch {
