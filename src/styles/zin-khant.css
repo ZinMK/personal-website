@@ -172,9 +172,18 @@ html {
   left: 0;
   bottom: 0;
   width: 240px;
-  padding: 40px 20px 40px 40px;
+  padding: clamp(48px, 12vh, 120px) 20px 40px 40px;
   display: flex;
   flex-direction: column;
+  gap: 28px;
+  /* let wheel events pass through so the page scrolls with the cursor over the nav */
+  pointer-events: none;
+}
+
+.zk-sidebar a,
+.zk-sidebar nav,
+.zk-side-status {
+  pointer-events: auto;
 }
 
 .zk-sidebar nav {
