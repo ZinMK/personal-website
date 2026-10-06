@@ -10,6 +10,7 @@ export function AboutLaptop() {
       role="button"
       tabIndex={0}
       aria-pressed={open}
+      aria-label={open ? "Close laptop" : "Open laptop to read about"}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -19,9 +20,8 @@ export function AboutLaptop() {
     >
       <div className="zk-laptop-scene">
         <div className="zk-laptop-lid">
-          <span className="zk-laptop-camera" />
           <div className="zk-laptop-screen">
-            <span className="zk-laptop-screen-label">about.txt</span>
+            <span className="zk-laptop-screen-label">~/about.txt</span>
             <p>
               Hi! I&apos;m Zin. I&apos;m studying CS @ University of St. Thomas. If I
               see a problem I can fix, I will — throughout college that&apos;s all
@@ -33,8 +33,15 @@ export function AboutLaptop() {
               people.
             </p>
           </div>
+          <div className="zk-laptop-lidback">
+            <span className="zk-laptop-mark">Z</span>
+            <span className="zk-laptop-brand">Zin Khant</span>
+          </div>
         </div>
         <div className="zk-laptop-base">
+          <div className="zk-laptop-keys" />
+          <div className="zk-laptop-trackpad" />
+          <span className="zk-laptop-monogram">ZK</span>
           <span className="zk-laptop-notch" />
         </div>
       </div>
