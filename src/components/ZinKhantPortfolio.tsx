@@ -283,24 +283,6 @@ export const ZinKhantPortfolio = () => {
               </a>
             ))}
           </nav>
-          <div className="zk-side-status">
-            <span className="zk-status-row">
-              <span
-                style={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: "50%",
-                  background: "var(--muted)",
-                  flexShrink: 0,
-                }}
-              />
-              Saint Paul, MN
-            </span>
-            <span className="zk-status-row">
-              <span className="zk-pulse-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff5500", flexShrink: 0 }} />
-              PM Intern · Cloudflare
-            </span>
-          </div>
         </aside>
 
         <main className="zk-content">
