@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import "@/styles/zin-khant.css";
 import { useTextScramble } from "@/components/canvasui/TextScramble";
+import { AboutLaptop } from "@/components/AboutLaptop";
 
 const workEntries = [
   {
