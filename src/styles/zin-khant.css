@@ -314,14 +314,20 @@ html {
 
 .zk-laptop-scene {
   perspective: 1800px;
-  perspective-origin: 50% 20%;
+  perspective-origin: 50% 30%;
   width: min(600px, 100%);
+}
+
+/* tilt the whole stage so the closed lid reads as a laptop seen from above */
+.zk-laptop-stage {
+  transform: rotateX(18deg);
+  transform-style: preserve-3d;
 }
 
 .zk-laptop-lid {
   position: relative;
   transform-origin: bottom center;
-  transform: rotateX(-82deg);
+  transform: rotateX(-90deg);
   transition: transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
   background: linear-gradient(180deg, #1c1c1b, #0e0e0d);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -329,10 +335,11 @@ html {
   border-radius: 14px 14px 0 0;
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
   transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .zk-laptop.is-open .zk-laptop-lid {
-  transform: rotateX(0deg);
+  transform: rotateX(-8deg);
 }
 
 .zk-laptop-camera {
@@ -354,6 +361,18 @@ html {
   padding: 34px 30px 30px;
   min-height: 230px;
   color: var(--paper);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.zk-laptop:focus {
+  outline: none;
+}
+
+.zk-laptop:focus-visible {
+  outline: 1px solid var(--line);
+  outline-offset: 8px;
+  border-radius: 14px;
 }
 
 .zk-laptop-screen-label {
