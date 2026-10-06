@@ -313,20 +313,8 @@ export const ZinKhantPortfolio = () => {
               </div>
             </div>
 
-            <div data-reveal style={{ maxWidth: "62ch" }}>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "clamp(14px,1.6vw,18px)",
-                  lineHeight: 1.6,
-                  opacity: 0.8,
-                }}
-              >
-                Hi! I'm Zin. I'm studying CS @ University of St. Thomas. If I see a problem I can fix, I will. Throughout college that's all I have done. 
-                I love talking about about meditation,
-                philosophy, music, AI. I make music and more than anything, I want
-                the things I build to connect people.
-              </p>
+            <div data-reveal style={{ width: "100%" }}>
+              <AboutLaptop />
             </div>
           </section>
 
