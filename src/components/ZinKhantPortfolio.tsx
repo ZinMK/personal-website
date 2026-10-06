@@ -274,7 +274,7 @@ export const ZinKhantPortfolio = () => {
                 style={{
                   margin: 0,
                   ...displayStyle,
-                  fontSize: "clamp(32px, 4.5vw, 52px)",
+                  fontSize: "clamp(26px, 3.5vw, 42px)",
                   lineHeight: 0.95,
                 }}
               >
@@ -316,7 +316,7 @@ export const ZinKhantPortfolio = () => {
               <p
                 style={{
                   margin: 0,
-                  fontSize: "clamp(16px,1.8vw,20px)",
+                  fontSize: "clamp(14px,1.6vw,18px)",
                   lineHeight: 1.6,
                   opacity: 0.8,
                 }}
@@ -426,7 +426,7 @@ export const ZinKhantPortfolio = () => {
                       style={{
                         margin: 0,
                         ...displayStyle,
-                        fontSize: "clamp(20px,2.4vw,27px)",
+                        fontSize: "clamp(17px,2vw,22px)",
                         lineHeight: 1.05,
                       }}
                     >
@@ -545,7 +545,7 @@ export const ZinKhantPortfolio = () => {
                       style={{
                         margin: 0,
                         ...displayStyle,
-                        fontSize: "clamp(20px,2.4vw,27px)",
+                        fontSize: "clamp(17px,2vw,22px)",
                         lineHeight: 1.05,
                       }}
                     >
@@ -587,7 +587,7 @@ export const ZinKhantPortfolio = () => {
                 <p
                   style={{
                     margin: 0,
-                    fontSize: "clamp(15px,1.7vw,19px)",
+                    fontSize: "clamp(14px,1.5vw,17px)",
                     lineHeight: 1.55,
                     maxWidth: "60ch",
                     opacity: 0.72,
@@ -596,114 +596,6 @@ export const ZinKhantPortfolio = () => {
                   {entry.description}
                 </p>
               </article>
-              ))}
-            </div>
-          </section>
-
-          <section
-            id="writings"
-            style={{
-              padding:
-                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
-              scrollMarginTop: 24,
-            }}
-          >
-            <div
-              data-reveal
-              data-scramble
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 13,
-                textTransform: "uppercase",
-                letterSpacing: ".18em",
-                color: "var(--muted)",
-                marginBottom: 12,
-              }}
-            >
-              Writings
-            </div>
-
-            <div style={{ borderTop: "1px solid var(--line)" }} />
-
-            <div className="zk-work-scroll">
-              {writingEntries.map((post, i) => (
-                <article
-                  key={post.title}
-                  data-reveal
-                  style={{
-                    borderTop: i === 0 ? undefined : "1px solid var(--line)",
-                    borderBottom: post.last ? "1px solid var(--line)" : undefined,
-                    padding: "clamp(16px,2.5vw,24px) 0",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 16,
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "clamp(12px,3vw,36px)",
-                      alignItems: "baseline",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div style={{ flex: 1, minWidth: 240 }}>
-                      <h3
-                        style={{
-                          margin: 0,
-                          ...displayStyle,
-                          fontSize: "clamp(20px,2.4vw,27px)",
-                          lineHeight: 1.05,
-                        }}
-                      >
-                        {post.href ? (
-                          <a
-                            href={post.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="zk-hover-ink"
-                            style={{
-                              color: "inherit",
-                              textDecoration: "underline",
-                              textDecorationThickness: "1px",
-                              textUnderlineOffset: "6px",
-                              textDecorationColor: "var(--line)",
-                            }}
-                          >
-                            {post.title}
-                          </a>
-                        ) : (
-                          post.title
-                        )}
-                      </h3>
-                    </div>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 12,
-                        textTransform: "uppercase",
-                        letterSpacing: ".08em",
-                        opacity: 0.5,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {post.date}
-                    </span>
-                  </div>
-
-                  <p
-                    style={{
-                      margin: 0,
-                      fontSize: "clamp(15px,1.7vw,19px)",
-                      lineHeight: 1.55,
-                      maxWidth: "60ch",
-                      opacity: 0.72,
-                    }}
-                  >
-                    {post.blurb}
-                  </p>
-                </article>
               ))}
             </div>
           </section>
@@ -740,7 +632,7 @@ export const ZinKhantPortfolio = () => {
                 display: "inline-block",
                 marginTop: "clamp(16px,2.5vw,24px)",
                 fontFamily: "var(--font-body)",
-                fontSize: "clamp(18px,2.6vw,26px)",
+                fontSize: "clamp(15px,2vw,20px)",
                 color: "inherit",
                 borderBottom: "2px solid currentColor",
                 paddingBottom: 4,
