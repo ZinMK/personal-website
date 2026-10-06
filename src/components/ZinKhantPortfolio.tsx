@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import * as Tabs from "@radix-ui/react-tabs";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "@/styles/zin-khant.css";
-import { useTextScramble } from "@/components/canvasui/TextScramble";
+import { LiveAge } from "@/components/LiveAge";
 
 const workEntries = [
   {
@@ -117,17 +119,11 @@ const experienceEntries: {
   },
 ];
 
-const displayStyle = {
-  fontFamily: "var(--font-display)",
-  fontWeight: "var(--display-weight)" as const,
-  letterSpacing: "var(--display-spacing)",
-  textTransform: "var(--display-transform)" as const,
-};
-
 const NAV_ITEMS = [
-  { id: "home", label: "home" },
+  { id: "home", label: "Zin Khant" },
   { id: "work", label: "work" },
   { id: "projects", label: "projects" },
+  { id: "music", label: "music" },
   { id: "reach", label: "contact" },
 ];
 
@@ -161,530 +157,154 @@ const MailIcon = () => (
 );
 
 export const ZinKhantPortfolio = () => {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useState("home");
-  useTextScramble(rootRef);
+  const [spotifyReloadKey, setSpotifyReloadKey] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const activeSection = NAV_ITEMS.find((item) => `#${item.id}` === location.hash)?.id ?? "home";
 
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const els = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
-    const show = (el: HTMLElement) => {
-      if (el.hasAttribute("data-in")) return;
-      const siblings = el.parentElement?.querySelectorAll("[data-reveal]");
-      const idx = siblings ? Array.from(siblings).indexOf(el) : 0;
-      el.style.setProperty("--reveal-delay", `${Math.min(idx, 8) * 0.09}s`);
-      el.setAttribute("data-in", "");
-    };
-
-    const showInView = () => {
-      const vh = window.innerHeight;
-      els.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < vh * 0.95 && rect.bottom > 0) show(el);
-      });
-    };
-
-    showInView();
-
-    let io: IntersectionObserver | undefined;
-    if ("IntersectionObserver" in window) {
-      io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              show(e.target as HTMLElement);
-              io?.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.05, rootMargin: "0px 0px 10% 0px" },
-      );
-      els.forEach((el) => {
-        if (!el.hasAttribute("data-in")) io?.observe(el);
-      });
-    } else {
-      els.forEach(show);
-    }
-
-    const fallback = window.setTimeout(() => els.forEach(show), 1200);
-    window.addEventListener("resize", showInView);
-
-    // Active-section tracking for the sidebar
-    const sections = NAV_ITEMS.map((item) =>
-      document.getElementById(item.id),
-    ).filter((el): el is HTMLElement => Boolean(el));
-
-    let sectionIo: IntersectionObserver | undefined;
-    if ("IntersectionObserver" in window && sections.length) {
-      sectionIo = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((e) => e.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-          if (visible) setActiveSection(visible.target.id);
-        },
-        { threshold: [0.15, 0.4], rootMargin: "-10% 0px -30% 0px" },
-      );
-      sections.forEach((el) => sectionIo?.observe(el));
-    }
-
-    return () => {
-      io?.disconnect();
-      sectionIo?.disconnect();
-      window.clearTimeout(fallback);
-      window.removeEventListener("resize", showInView);
-    };
-  }, []);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [activeSection]);
 
   return (
-    <div id="zk-root" ref={rootRef} className="zk-page">
-      <div className="zk-layout">
-        <aside className="zk-sidebar">
-          <nav aria-label="Site">
+    <div id="zk-root" className="zk-page">
+      <a href="#main" className="zk-skip-link">Skip to content</a>
+      <Tabs.Root
+        className="zk-layout"
+        activationMode="manual"
+        value={activeSection}
+        onValueChange={(value) => navigate({ hash: `#${value}` })}
+      >
+        <header className="zk-header">
+          <Tabs.List aria-label="Portfolio sections" className="zk-tabs">
             {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="zk-side-link"
-                {...(activeSection === item.id ? { "data-active": "" } : {})}
-              >
+              <Tabs.Trigger key={item.id} value={item.id} className="zk-tab">
                 {item.label}
-              </a>
+              </Tabs.Trigger>
             ))}
-          </nav>
-          <div className="zk-side-status">
-            <span className="zk-status-row">
-              <span
-                style={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: "50%",
-                  background: "var(--muted)",
-                  flexShrink: 0,
-                }}
-              />
-              Saint Paul, MN
-            </span>
-            <span className="zk-status-row">
-              <span className="zk-pulse-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff5500", flexShrink: 0 }} />
-              PM Intern · Cloudflare
-            </span>
-          </div>
-        </aside>
+          </Tabs.List>
+        </header>
 
-        <main className="zk-content">
-          <>
-          <section
-            id="home"
-            style={{
-              padding:
-                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(28px,4vh,48px)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(16px,3vh,28px)",
-            }}
-          >
-            <div data-reveal>
-              <h1
-                data-scramble
-                style={{
-                  margin: 0,
-                  ...displayStyle,
-                  fontSize: "clamp(40px, 6vw, 68px)",
-                  lineHeight: 0.95,
-                }}
-              >
-                Zin Khant
-              </h1>
-              <div style={{ display: "flex", gap: 18, marginTop: 18 }}>
+        <main id="main" className="zk-content" tabIndex={-1}>
+          <Tabs.Content value="home" className="zk-intro">
+            <p className="zk-eyebrow">Builder, musician, curious person.</p>
+            <h1 id="intro-heading">Zin Khant<span className="zk-accent">.</span></h1>
+            <div className="zk-bio">
+              <p>
+                Hi! I'm Zin. I'm <LiveAge bornAt="2003-09-23T00:00:00-05:00" /> years old.
+                I'm studying CS at the University of St. Thomas.
+                If I see a problem I can fix, I will, that's all I've done
+                throughout college.
+              </p>
+              <p>
+                I love talking about{" "}
                 <a
-                  href="https://www.linkedin.com/in/zin-khant-993055216"
+                  className="zk-highlight-link"
+                  href="https://www.dhamma.org/en/about/vipassana"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="zk-hover-ink"
-                  style={{ color: "var(--muted)" }}
+                  aria-label="meditation: learn about Vipassana meditation"
                 >
-                  <LinkedInIcon />
-                </a>
-                <a
-                  href="https://x.com/zinnMK_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X"
-                  className="zk-hover-ink"
-                  style={{ color: "var(--muted)" }}
-                >
-                  <XIcon />
-                </a>
-                <a
-                  href="mailto:khan4152@stthomas.edu"
-                  aria-label="Email"
-                  className="zk-hover-ink"
-                  style={{ color: "var(--muted)" }}
-                >
-                  <MailIcon />
-                </a>
-              </div>
-            </div>
-
-            <div data-reveal style={{ maxWidth: "62ch" }}>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "clamp(16px,1.8vw,20px)",
-                  lineHeight: 1.6,
-                  opacity: 0.8,
-                }}
-              >
-                Hi! I'm Zin. I'm studying CS @ University of St. Thomas. If I see a problem I can fix, I will. Throughout college that's all I have done. 
-                I love talking about about meditation,
-                philosophy, music, AI. I make music and more than anything, I want
-                the things I build to connect people.
+                  meditation
+                </a>, philosophy, music, and AI.
+                I make music and, more than anything, I want the things I build
+                to connect people.
               </p>
             </div>
-          </section>
-
-          <section
-            id="about"
-            style={{
-              padding:
-                "clamp(24px,4vh,40px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
-              scrollMarginTop: 24,
-            }}
-          >
-            <div data-reveal>
-              <span
-                data-scramble
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 11,
-                  textTransform: "uppercase",
-                  letterSpacing: ".16em",
-                  color: "var(--muted)",
-                }}
-              >
-                My music
-              </span>
-
-              <iframe
-                data-testid="embed-iframe"
-                title="Zin Khant on Spotify"
-                style={{
-                  borderRadius: 12,
-                  width: "100%",
-                  height: 352,
-                  display: "block",
-                  marginTop: 20,
-                }}
-                src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0&si=eaf0addcfa9948db"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
+            <div className="zk-socials">
+              <a href="https://www.linkedin.com/in/zin-khant-993055216" target="_blank" rel="noopener noreferrer">
+                <LinkedInIcon /><span>LinkedIn</span>
+              </a>
+              <a href="https://x.com/zinnMK_" target="_blank" rel="noopener noreferrer">
+                <XIcon /><span>Twitter</span>
+              </a>
+              <a href="mailto:khan4152@stthomas.edu">
+                <MailIcon /><span>Email</span>
+              </a>
             </div>
-          </section>
+          </Tabs.Content>
 
-          <section
-            id="work"
-            style={{
-              padding:
-                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
-              scrollMarginTop: 24,
-            }}
-          >
-            <div
-              data-reveal
-              data-scramble
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 13,
-                textTransform: "uppercase",
-                letterSpacing: ".18em",
-                color: "var(--muted)",
-                marginBottom: 12,
-              }}
-            >
-              Work
-            </div>
-
-            <div style={{ borderTop: "1px solid var(--line)" }} />
-
-            <div className="zk-work-scroll">
-              {experienceEntries.map((job, i) => (
-              <article
-                key={`${job.title}-${job.org}`}
-                data-reveal
-                style={{
-                  borderTop:
-                    i === 0 ? undefined : "1px solid var(--line)",
-                  borderBottom:
-                    i === experienceEntries.length - 1
-                      ? "1px solid var(--line)"
-                      : undefined,
-                  padding: "clamp(16px,2.5vw,24px) 0",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "clamp(12px,3vw,36px)",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div style={{ minWidth: 240, flex: 1 }}>
-                    <h3
-                      style={{
-                        margin: 0,
-                        ...displayStyle,
-                        fontSize: "clamp(24px,3.2vw,36px)",
-                        lineHeight: 1.05,
-                      }}
-                    >
-                      {job.title}
-                    </h3>
-                    <p
-                      style={{
-                        margin: "8px 0 0",
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 13,
-                        color: "var(--muted)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      <span>{job.org}</span>
-                      {job.blog && (
-                        <>
-                          <span style={{ opacity: 0.4 }}>|</span>
-                          <a
-                            href={job.blog}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                              color: "#ff5500",
-                              textDecoration: "none",
-                              borderBottom: "1px solid currentColor",
-                              paddingBottom: 1,
-                            }}
-                          >
-                            Read Blog
-                          </a>
-                        </>
-                      )}
-                    </p>
+          <Tabs.Content value="work" className="zk-section">
+            <h2 id="work-heading">Work</h2>
+            <div className="zk-list">
+              {experienceEntries.map((job) => (
+                <article key={`${job.title}-${job.org}`} className="zk-work-row">
+                  <div>
+                    <h3>{job.title}</h3>
+                    <p className="zk-organization">{job.org}</p>
+                    {job.blog && (
+                      <a href={job.blog} target="_blank" rel="noopener noreferrer" className="zk-text-link">
+                        Read the launch post <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
                   </div>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: ".08em",
-                      opacity: 0.5,
-                      whiteSpace: "nowrap",
-                      textAlign: "right",
-                    }}
-                  >
-                    <div>{job.location}</div>
-                    {job.period && <div style={{ marginTop: 6 }}>{job.period}</div>}
+                  <div className="zk-meta">
+                    {job.period && <p>{job.period}</p>}
+                    <p>{job.location}</p>
                   </div>
-                </div>
-              </article>
+                </article>
               ))}
             </div>
-          </section>
+          </Tabs.Content>
 
-          <section
-            id="projects"
-            style={{
-              padding:
-                "clamp(36px,6vh,64px) clamp(24px,5vw,64px) clamp(24px,4vh,40px)",
-              scrollMarginTop: 24,
-            }}
-          >
-            <div
-              data-reveal
-              data-scramble
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 13,
-                textTransform: "uppercase",
-                letterSpacing: ".18em",
-                color: "var(--muted)",
-                marginBottom: 12,
-              }}
-            >
-              Projects
-            </div>
-
-            <div style={{ borderTop: "1px solid var(--line)" }} />
-
-            <div className="zk-work-scroll">
-              {workEntries.map((entry, i) => (
-                <article
-                key={entry.title}
-                data-reveal
-                style={{
-                  borderTop: i === 0 ? undefined : "1px solid var(--line)",
-                  borderBottom: entry.last ? "1px solid var(--line)" : undefined,
-                  padding: "clamp(16px,2.5vw,24px) 0",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "clamp(12px,3vw,36px)",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      flex: 1,
-                      minWidth: 240,
-                    }}
-                  >
-                    <h3
-                      style={{
-                        margin: 0,
-                        ...displayStyle,
-                        fontSize: "clamp(24px,3.2vw,36px)",
-                        lineHeight: 1.05,
-                      }}
-                    >
+          <Tabs.Content value="projects" className="zk-section">
+            <h2 id="projects-heading">Projects</h2>
+            <div className="zk-list">
+              {workEntries.map((entry) => (
+                <article key={entry.title} className="zk-project-row">
+                  <div className="zk-row-heading">
+                    <h3>
                       {entry.href ? (
-                        <a
-                          href={entry.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="zk-hover-ink"
-                          style={{
-                            color: "inherit",
-                            textDecoration: "underline",
-                            textDecorationThickness: "1px",
-                            textUnderlineOffset: "6px",
-                            textDecorationColor: "var(--line)",
-                          }}
-                        >
-                          {entry.title}
+                        <a href={entry.href} target="_blank" rel="noopener noreferrer">
+                          {entry.title} <span className="zk-link-arrow" aria-hidden="true">↗</span>
                         </a>
-                      ) : (
-                        entry.title
-                      )}
+                      ) : entry.title}
                     </h3>
+                    <span className="zk-meta">{entry.year}</span>
                   </div>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: ".08em",
-                      opacity: 0.5,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {entry.year}
-                  </span>
-                </div>
-
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "clamp(15px,1.7vw,19px)",
-                    lineHeight: 1.55,
-                    maxWidth: "60ch",
-                    opacity: 0.72,
-                  }}
-                >
-                  {entry.description}
-                </p>
-              </article>
+                  <p className="zk-description">{entry.description}</p>
+                </article>
               ))}
             </div>
-          </section>
+          </Tabs.Content>
 
-          <section
-            id="reach"
-            style={{
-              padding: "clamp(40px,7vh,88px) clamp(24px,5vw,64px)",
-              scrollMarginTop: 24,
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(18px,3.5vh,32px)",
-            }}
+          <Tabs.Content
+            value="music"
+            className="zk-section"
+            forceMount
+            hidden={activeSection !== "music"}
           >
-            <div
-              data-reveal
-              data-scramble
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 13,
-                textTransform: "uppercase",
-                letterSpacing: ".18em",
-                color: "var(--muted)",
-              }}
-            >
-              Contact
+            <h2 id="music-heading">My music</h2>
+            <iframe
+              key={spotifyReloadKey}
+              title="Zin Khant on Spotify"
+              className="zk-spotify"
+              src="https://open.spotify.com/embed/artist/7KC3H4mshZpBLLeG4y18sw?utm_source=generator&theme=0&si=eaf0addcfa9948db"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="eager"
+            />
+            <div className="zk-music-actions">
+              <a className="zk-text-link" href="https://open.spotify.com/artist/7KC3H4mshZpBLLeG4y18sw" target="_blank" rel="noopener noreferrer">
+                Listen on Spotify <span aria-hidden="true">↗</span>
+              </a>
+              <button type="button" className="zk-reload-player" onClick={() => setSpotifyReloadKey((key) => key + 1)}>
+                Reload player
+              </button>
             </div>
+          </Tabs.Content>
 
-            <a
-              data-reveal
-              href="mailto:khan4152@stthomas.edu"
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "clamp(18px,2.6vw,26px)",
-                color: "inherit",
-                borderBottom: "2px solid currentColor",
-                paddingBottom: 4,
-                alignSelf: "flex-start",
-                textDecoration: "none",
-              }}
-            >
-              khan4152@stthomas.edu
-            </a>
-          </section>
+          <Tabs.Content value="reach" className="zk-section zk-contact">
+            <h2 id="contact-heading">Say hello</h2>
+            <p>Have something in mind, or just want to talk? I'd love to hear from you.</p>
+            <a className="zk-text-link" href="mailto:khan4152@stthomas.edu">khan4152@stthomas.edu <span aria-hidden="true">↗</span></a>
+          </Tabs.Content>
 
-          <footer
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 16,
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "clamp(20px,3vh,32px) clamp(24px,5vw,64px)",
-              borderTop: "1px solid var(--line)",
-              fontFamily: "var(--font-mono)",
-              fontSize: 12,
-              letterSpacing: ".04em",
-              color: "var(--muted)",
-            }}
-          >
-            <span>© 2026 Zin Khant — Saint Paul, MN</span>
-            <a
-              href="#home"
-              className="zk-hover-ink"
-              style={{ color: "inherit", textDecoration: "none" }}
-            >
-              Back to top ↑
-            </a>
+          <footer className="zk-footer">
+            <span>© 2026 Zin Khant · Saint Paul, MN</span>
+            <Link to="#home">Home ↗</Link>
           </footer>
-          </>
         </main>
-      </div>
+      </Tabs.Root>
     </div>
   );
 };
