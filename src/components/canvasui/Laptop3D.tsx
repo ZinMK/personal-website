@@ -1,4 +1,5 @@
 import { Component, Suspense, useRef, useState, type ReactNode } from "react";
+import type * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { RoundedBox, Text } from "@react-three/drei";
 import { AboutLaptop } from "@/components/AboutLaptop";
