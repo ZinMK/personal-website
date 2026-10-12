@@ -3,11 +3,11 @@ html {
 }
 
 .zk-page {
-  --paper: #f8f7f4;
-  --ink: #242623;
-  --muted: #676b64;
-  --line: #dddfd8;
-  --accent: #42644b;
+  --paper: #141614;
+  --ink: #e6e7e2;
+  --muted: #9a9f96;
+  --line: #2f332e;
+  --accent: #8fbf98;
   min-height: 100vh;
   background: var(--paper);
   color: var(--ink);
@@ -22,7 +22,7 @@ html {
 }
 
 .zk-page ::selection {
-  background: #dce6d9;
+  background: #2e4433;
   color: var(--ink);
 }
 
@@ -65,7 +65,7 @@ html {
   position: relative;
   appearance: none;
   flex-shrink: 0;
-  --tab-fill: #f0f1ec;
+  --tab-fill: #1c1f1b;
   --tab-base: var(--line);
   --tab-curve: 9px;
   background: var(--tab-fill);
@@ -117,7 +117,7 @@ html {
 }
 
 .zk-tab:hover {
-  --tab-fill: #f4f4f0;
+  --tab-fill: #232722;
   color: var(--ink);
 }
 
@@ -172,7 +172,7 @@ html {
 
 .zk-bio {
   max-width: 59ch;
-  color: #50564e;
+  color: #b8bcb3;
   font-size: 17px;
   line-height: 1.75;
 }
@@ -270,7 +270,7 @@ html {
 }
 
 .zk-description {
-  color: #50564e;
+  color: #b8bcb3;
   font-size: 15px;
   line-height: 1.7;
   margin: 10px 0 0;
@@ -374,7 +374,7 @@ html {
 
 .zk-page .zk-highlight-link {
   color: var(--accent);
-  background: #e4ebdf;
+  background: #24342a;
   padding: 1px 4px;
   border-radius: 4px;
   text-decoration: underline;
@@ -382,7 +382,7 @@ html {
 }
 
 .zk-page .zk-highlight-link:hover {
-  background: #d7e2cf;
+  background: #2e4433;
 }
 
 .zk-music-actions {
